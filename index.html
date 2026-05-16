@@ -1,0 +1,2132 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Keghar — Ресторан и винодельня в Ереване с 1877 года</title>
+<meta name="description" content="Keghar — семейный ресторан армянской кухни в старом Норьке. Исторический погреб, традиционные блюда и домашнее вино с 1877 года." />
+<meta name="theme-color" content="#F2EBDD" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&family=Noto+Serif+Armenian:wght@300;400;500;600&family=Noto+Sans+Armenian:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+<style>
+  :root {
+    /* light beige / grey palette */
+    --bg:         #F5F0E5;   /* page base, warm cream */
+    --bg-soft:    #EFE8D9;   /* alt section */
+    --bg-warm:    #E8DFCC;   /* slightly deeper beige */
+    --bg-stone:   #DDD3BD;   /* feature surfaces */
+    --bg-mist:    #FAF6EC;   /* lightest */
+
+    --ink:        #2E2A24;   /* primary text — warm near-black */
+    --ink-soft:   #4C4640;
+    --muted:      #7A7264;   /* secondary text, warm grey */
+    --line:       rgba(46, 42, 36, 0.10);
+    --line-soft:  rgba(46, 42, 36, 0.06);
+
+    --wine:       #8B3A3A;   /* muted dusty wine accent */
+    --wine-deep:  #6E2A2A;
+    --gold:       #A88652;   /* aged gold / tan */
+    --gold-soft:  #C2A576;
+    --stone:      #9A9082;
+
+    --serif: 'Cormorant Garamond', 'Noto Serif Armenian', 'Times New Roman', serif;
+    --sans: 'Inter', 'Noto Sans Armenian', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+
+    --container: 1240px;
+    --gutter: clamp(20px, 5vw, 48px);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  body {
+    font-family: var(--sans);
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.6;
+    font-weight: 300;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  img { display: block; max-width: 100%; height: auto; }
+  a { color: inherit; text-decoration: none; transition: opacity .25s, color .25s; }
+  a:hover { opacity: .7; }
+  button { font: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+
+  .wrap { max-width: var(--container); margin: 0 auto; padding: 0 var(--gutter); }
+
+  /* ─────────────  TYPE  ───────────── */
+  .display {
+    font-family: var(--serif);
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    line-height: 1.05;
+  }
+  .eyebrow {
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--wine);
+  }
+  .rule {
+    display: inline-block;
+    width: 48px;
+    height: 1px;
+    background: var(--gold);
+    vertical-align: middle;
+    margin: 0 14px 4px;
+  }
+
+  /* ─────────────  NAV  ───────────── */
+  .nav {
+    position: fixed;
+    inset: 0 0 auto 0;
+    z-index: 50;
+    padding: 18px var(--gutter);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: background .35s ease, padding .35s ease, backdrop-filter .35s ease;
+    background: transparent;
+  }
+  .nav.scrolled {
+    background: rgba(245, 240, 229, 0.85);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    padding: 12px var(--gutter);
+  }
+  .brand {
+    font-family: var(--serif);
+    font-size: 26px;
+    letter-spacing: 0.18em;
+    color: var(--ink);
+  }
+  .brand small {
+    display: block;
+    font-family: var(--sans);
+    font-size: 9px;
+    letter-spacing: 0.4em;
+    color: var(--wine);
+    margin-top: -2px;
+  }
+  .nav-links {
+    display: flex;
+    gap: 36px;
+    list-style: none;
+    font-size: 13px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-weight: 400;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .nav-links a { color: var(--ink-soft); }
+  .nav-links a:hover { color: var(--wine); opacity: 1; }
+  .nav-cta {
+    border: 1px solid var(--wine);
+    color: var(--wine);
+    padding: 10px 18px;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    transition: background .25s, color .25s;
+  }
+  .nav-cta:hover { background: var(--wine); color: var(--bg-mist); opacity: 1; }
+
+  .burger {
+    display: none;
+    width: 32px;
+    height: 32px;
+    position: relative;
+  }
+  .burger span {
+    position: absolute;
+    left: 4px;
+    right: 4px;
+    height: 1px;
+    background: var(--ink);
+    transition: transform .3s, opacity .3s, top .3s;
+  }
+  .burger span:nth-child(1) { top: 11px; }
+  .burger span:nth-child(2) { top: 16px; }
+  .burger span:nth-child(3) { top: 21px; }
+  .burger.open span:nth-child(1) { top: 16px; transform: rotate(45deg); }
+  .burger.open span:nth-child(2) { opacity: 0; }
+  .burger.open span:nth-child(3) { top: 16px; transform: rotate(-45deg); }
+
+  .nav-mobile { display: none; }
+
+  /* ─────────────  HERO  ───────────── */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    min-height: 100svh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+    isolation: isolate;
+  }
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    background-color: var(--bg-mist);
+    background-image: url('assets/hero-table.png');
+    background-size: cover;
+    background-position: center 40%;
+    background-repeat: no-repeat;
+  }
+  .hero-bg::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.40  0 0 0 0 0.34  0 0 0 0 0.26  0 0 0 0.10 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+    opacity: 0.28;
+    mix-blend-mode: multiply;
+    pointer-events: none;
+  }
+  .hero-bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+      radial-gradient(ellipse at 50% 110%, rgba(139, 58, 58, 0.09) 0%, transparent 52%),
+      radial-gradient(ellipse at 14% 8%, rgba(168, 134, 82, 0.14) 0%, transparent 42%),
+      radial-gradient(ellipse at 50% 44%, rgba(245, 240, 229, 0.78) 0%, rgba(245, 240, 229, 0.38) 52%, rgba(245, 240, 229, 0.72) 100%),
+      linear-gradient(180deg, rgba(250, 246, 236, 0.82) 0%, rgba(245, 240, 229, 0.48) 48%, rgba(239, 232, 217, 0.88) 100%);
+  }
+
+  .hero-content {
+    position: relative;
+    padding: 0 var(--gutter);
+    max-width: 920px;
+  }
+  .hero-eyebrow {
+    margin-bottom: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    font-size: 11px;
+    letter-spacing: 0.4em;
+    color: var(--wine);
+    text-transform: uppercase;
+  }
+  .hero-eyebrow .dot {
+    width: 4px; height: 4px; border-radius: 50%; background: var(--wine);
+  }
+  .hero-title {
+    font-size: clamp(64px, 14vw, 180px);
+    line-height: 0.9;
+    font-weight: 300;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin-bottom: 28px;
+  }
+  .hero-title em {
+    font-style: italic;
+    color: var(--wine);
+    font-weight: 300;
+  }
+  .hero-sub {
+    font-family: var(--serif);
+    font-size: clamp(18px, 2.6vw, 26px);
+    font-style: italic;
+    font-weight: 300;
+    color: var(--ink-soft);
+    margin-bottom: 48px;
+  }
+  .hero-actions {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 16px 32px;
+    font-size: 12px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    font-weight: 500;
+    transition: all .3s;
+    border: 1px solid transparent;
+  }
+  .btn-gold {
+    background: var(--wine);
+    color: var(--bg-mist);
+  }
+  .btn-gold:hover { background: var(--wine-deep); opacity: 1; }
+  .btn-ghost {
+    border-color: var(--ink-soft);
+    color: var(--ink);
+  }
+  .btn-ghost:hover { border-color: var(--wine); color: var(--wine); opacity: 1; }
+
+  .hero-scroll {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 10px;
+    letter-spacing: 0.4em;
+    color: var(--stone);
+    text-transform: uppercase;
+    writing-mode: vertical-rl;
+  }
+  .hero-scroll::after {
+    content: '';
+    display: block;
+    width: 1px;
+    height: 36px;
+    background: linear-gradient(180deg, var(--gold), transparent);
+    margin: 12px auto 0;
+  }
+
+  /* ─────────────  SECTION BASE  ───────────── */
+  section { position: relative; padding: clamp(80px, 12vw, 160px) 0; }
+  .section-head { text-align: center; margin-bottom: clamp(48px, 7vw, 88px); }
+  .section-head h2 {
+    font-size: clamp(40px, 6.5vw, 72px);
+    color: var(--ink);
+    margin-top: 14px;
+    font-weight: 400;
+  }
+  .section-head h2 em { font-style: italic; color: var(--wine); }
+  .section-head p {
+    max-width: 620px;
+    margin: 24px auto 0;
+    color: var(--muted);
+    font-size: 16px;
+    line-height: 1.75;
+  }
+
+  /* ─────────────  ABOUT  ───────────── */
+  .about { background: var(--bg-soft); }
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1.05fr 1fr;
+    gap: clamp(40px, 7vw, 96px);
+    align-items: center;
+  }
+  .about-visual {
+    position: relative;
+    aspect-ratio: 4/5;
+    border-radius: 2px;
+    overflow: hidden;
+    background-color: #C9BB9C;
+    background-image: url('assets/corks.webp');
+    background-size: cover;
+    background-position: center;
+    border: 1px solid var(--line);
+    box-shadow: 0 30px 70px -25px rgba(46, 42, 36, 0.35);
+  }
+  .about-visual::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(180deg, rgba(245, 240, 229, 0.0) 0%, rgba(46, 42, 36, 0.0) 45%, rgba(46, 42, 36, 0.55) 100%),
+      linear-gradient(135deg, rgba(168, 134, 82, 0.12) 0%, rgba(110, 42, 42, 0.18) 100%);
+    pointer-events: none;
+  }
+  .about-visual::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='400'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.35  0 0 0 0 0.28  0 0 0 0 0.18  0 0 0 0.15 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+    mix-blend-mode: overlay;
+    pointer-events: none;
+  }
+  .about-visual-num {
+    position: absolute;
+    bottom: -20px;
+    left: -10px;
+    font-family: var(--serif);
+    font-size: clamp(120px, 22vw, 260px);
+    line-height: 0.85;
+    color: rgba(245, 240, 229, 0.92);
+    font-style: italic;
+    font-weight: 300;
+    text-shadow: 0 4px 24px rgba(46, 42, 36, 0.55);
+    z-index: 2;
+  }
+  .about-visual-cap {
+    position: absolute;
+    bottom: 28px;
+    right: 28px;
+    text-align: right;
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 18px;
+    color: var(--bg-mist);
+    max-width: 55%;
+    text-shadow: 0 2px 12px rgba(46, 42, 36, 0.6);
+    z-index: 2;
+  }
+  .about-text h3 {
+    font-family: var(--serif);
+    font-size: clamp(32px, 4.5vw, 52px);
+    font-weight: 400;
+    line-height: 1.15;
+    margin-bottom: 28px;
+    color: var(--ink);
+  }
+  .about-text h3 em { font-style: italic; color: var(--wine); }
+  .about-text p {
+    color: var(--ink-soft);
+    font-size: 16px;
+    line-height: 1.85;
+    margin-bottom: 20px;
+  }
+  .about-facts {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 44px;
+    padding-top: 36px;
+    border-top: 1px solid var(--line);
+  }
+  .fact .num {
+    font-family: var(--serif);
+    font-size: clamp(36px, 5vw, 52px);
+    color: var(--wine);
+    font-weight: 400;
+    line-height: 1;
+  }
+  /* Оптическое выравнивание: «6» в Cormorant сидит чуть выше «5» и цифр с «+» */
+  .fact:last-child .num {
+    display: inline-block;
+    transform: translateY(0.1em);
+  }
+  .fact .lbl {
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--stone);
+    margin-top: 8px;
+  }
+
+  /* ─────────────  MENU  ───────────── */
+  .menu {
+    background: var(--bg);
+  }
+  .menu-tabs {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px 28px;
+    margin-bottom: 56px;
+  }
+  .menu-tab {
+    font-size: 11px;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    padding: 10px 4px;
+    color: var(--stone);
+    border-bottom: 1px solid transparent;
+    transition: color .25s, border-color .25s;
+  }
+  .menu-tab.active { color: var(--wine); border-bottom-color: var(--wine); }
+  .menu-tab:hover { color: var(--ink); opacity: 1; }
+
+  .menu-panel { display: none; }
+  .menu-panel.active { display: block; animation: fade .4s ease; }
+  @keyframes fade { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+
+  .menu-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px 64px;
+    max-width: 960px;
+    margin: 0 auto;
+  }
+  .menu-item {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 16px;
+    align-items: baseline;
+    padding: 22px 0;
+    border-bottom: 1px dashed rgba(46, 42, 36, 0.16);
+  }
+  .menu-item .name {
+    font-family: var(--serif);
+    font-size: 22px;
+    color: var(--ink);
+    font-weight: 500;
+    line-height: 1.2;
+  }
+  .menu-item .desc {
+    grid-column: 1 / -1;
+    color: var(--muted);
+    font-size: 13px;
+    font-style: italic;
+    margin-top: 4px;
+  }
+  .menu-item .price {
+    font-family: var(--serif);
+    font-size: 20px;
+    color: var(--wine);
+    white-space: nowrap;
+    font-style: italic;
+  }
+  .menu-note, .menu-subnote {
+    text-align: center;
+    margin-top: 48px;
+    font-size: 11px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--stone);
+  }
+  .menu-subnote { margin-top: 32px; }
+  .menu-subhead {
+    text-align: center;
+    font-family: var(--serif);
+    font-size: clamp(22px, 2.8vw, 30px);
+    font-style: italic;
+    font-weight: 400;
+    color: var(--wine);
+    margin: 72px 0 28px;
+    position: relative;
+  }
+  .menu-subhead::before,
+  .menu-subhead::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 28px;
+    height: 1px;
+    background: var(--gold);
+    opacity: 0.55;
+  }
+  .menu-subhead::before { right: calc(50% + 4.8em + 16px); }
+  .menu-subhead::after  { left:  calc(50% + 4.8em + 16px); }
+  .menu-panel > .menu-subhead:first-child { margin-top: 0; }
+  html[lang="hy"] .menu-subhead { font-size: clamp(20px, 2.5vw, 27px); }
+  .menu-intro {
+    text-align: center;
+    font-family: var(--serif);
+    font-size: clamp(17px, 2vw, 21px);
+    font-style: italic;
+    color: var(--ink-soft);
+    margin: 0 auto 56px;
+    max-width: 680px;
+    line-height: 1.5;
+  }
+  .menu-intro em { color: var(--wine); font-style: italic; }
+
+  /* ─────────────  CELLAR FEATURE  ───────────── */
+  .cellar {
+    background-color: #151210;
+    background-image: url('assets/cellar-marani.png');
+    background-size: cover;
+    background-position: center 42%;
+    background-repeat: no-repeat;
+    padding: clamp(100px, 14vw, 180px) 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .cellar::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background:
+      radial-gradient(ellipse at center, transparent 22%, rgba(0, 0, 0, 0.42) 100%),
+      radial-gradient(ellipse at 50% 28%, rgba(139, 58, 58, 0.14) 0%, transparent 58%),
+      linear-gradient(180deg, rgba(12, 10, 9, 0.78) 0%, rgba(22, 17, 14, 0.52) 48%, rgba(8, 7, 6, 0.85) 100%);
+  }
+  .cellar::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background-image:
+      url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='600' height='600'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.6' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.35  0 0 0 0 0.28  0 0 0 0 0.18  0 0 0 0.25 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+    opacity: 0.32;
+    mix-blend-mode: overlay;
+  }
+  .cellar .wrap {
+    position: relative;
+    z-index: 1;
+  }
+  .cellar-mark {
+    font-family: var(--serif);
+    font-size: clamp(80px, 16vw, 200px);
+    font-style: italic;
+    color: rgba(250, 246, 236, 0.055);
+    line-height: 1;
+    position: absolute;
+    top: 8%;
+    left: 50%;
+    transform: translateX(-50%);
+    pointer-events: none;
+    white-space: nowrap;
+    z-index: 1;
+  }
+  .cellar .eyebrow {
+    color: rgba(212, 188, 152, 0.95);
+  }
+  .cellar .rule {
+    background: rgba(212, 188, 152, 0.65);
+  }
+  .cellar h2 {
+    font-family: var(--serif);
+    font-size: clamp(40px, 6vw, 68px);
+    color: var(--bg-mist);
+    font-weight: 400;
+    max-width: 820px;
+    margin: 0 auto 28px;
+    line-height: 1.15;
+    position: relative;
+    text-shadow:
+      0 1px 3px rgba(0, 0, 0, 0.45),
+      0 12px 40px rgba(0, 0, 0, 0.35);
+  }
+  .cellar h2 em {
+    font-style: italic;
+    color: #E8C9BE;
+  }
+  .cellar p {
+    max-width: 600px;
+    margin: 0 auto;
+    color: rgba(250, 246, 236, 0.86);
+    font-size: 16px;
+    line-height: 1.85;
+    position: relative;
+    text-shadow: 0 2px 18px rgba(0, 0, 0, 0.35);
+  }
+
+  /* ─────────────  APP BANNER  ───────────── */
+  .app {
+    background: var(--bg-mist);
+    color: var(--ink);
+    padding: clamp(70px, 10vw, 120px) 0;
+  }
+  .app-card {
+    background:
+      linear-gradient(135deg, var(--bg-warm) 0%, var(--bg-stone) 100%);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: clamp(40px, 6vw, 80px);
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: clamp(40px, 6vw, 80px);
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 30px 80px -25px rgba(46, 42, 36, 0.18);
+  }
+  .app-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='400'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.35  0 0 0 0 0.28  0 0 0 0 0.18  0 0 0 0.15 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+    mix-blend-mode: multiply;
+    pointer-events: none;
+  }
+  .app-info { position: relative; color: var(--ink); }
+  .app-info .eyebrow { color: var(--wine); margin-bottom: 18px; display: block; }
+  .app-info h2 {
+    font-family: var(--serif);
+    font-size: clamp(32px, 4.5vw, 52px);
+    line-height: 1.1;
+    font-weight: 400;
+    margin-bottom: 20px;
+  }
+  .app-info h2 em { font-style: italic; color: var(--wine); }
+  .app-info p {
+    color: var(--ink-soft);
+    font-size: 15px;
+    line-height: 1.75;
+    margin-bottom: 32px;
+    max-width: 460px;
+  }
+  .app-store {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    background: var(--ink);
+    color: var(--bg-mist);
+    padding: 14px 26px 14px 22px;
+    border-radius: 10px;
+    transition: transform .25s, box-shadow .25s;
+    box-shadow: 0 8px 24px -8px rgba(46, 42, 36, 0.3);
+  }
+  .app-store:hover { transform: translateY(-2px); opacity: 1; box-shadow: 0 14px 36px -10px rgba(46, 42, 36, 0.4); }
+  .app-store svg { width: 30px; height: 30px; flex-shrink: 0; }
+  .app-store-text { line-height: 1.1; text-align: left; }
+  .app-store-text small {
+    display: block;
+    font-size: 11px;
+    letter-spacing: 0.04em;
+    color: rgba(245, 240, 229, 0.78);
+  }
+  .app-store-text strong {
+    display: block;
+    font-size: 19px;
+    font-weight: 500;
+    margin-top: 2px;
+    letter-spacing: -0.01em;
+  }
+  .app-feats {
+    display: flex;
+    gap: 24px;
+    margin-top: 28px;
+    flex-wrap: wrap;
+  }
+  .app-feats li {
+    list-style: none;
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--wine);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .app-feats li::before {
+    content: '';
+    width: 5px;
+    height: 5px;
+    background: var(--gold);
+    border-radius: 50%;
+  }
+
+  /* phone mockup — light theme */
+  .app-phone {
+    position: relative;
+    justify-self: center;
+    width: 100%;
+    max-width: 280px;
+    aspect-ratio: 9/19;
+  }
+  .phone-frame {
+    position: absolute;
+    inset: 0;
+    background: #2A2723;
+    border-radius: 38px;
+    padding: 10px;
+    box-shadow:
+      0 0 0 2px #4A453E,
+      0 30px 60px -10px rgba(46, 42, 36, 0.35),
+      inset 0 0 0 1px rgba(255,255,255,0.05);
+  }
+  .phone-screen {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, var(--bg-mist) 0%, var(--bg-soft) 100%);
+    border-radius: 30px;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 36px 18px 18px;
+  }
+  .phone-notch {
+    position: absolute;
+    top: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 22px;
+    background: #2A2723;
+    border-radius: 14px;
+  }
+  .phone-brand {
+    text-align: center;
+    font-family: var(--serif);
+    font-size: 18px;
+    letter-spacing: 0.22em;
+    color: var(--ink);
+    margin-bottom: 4px;
+  }
+  .phone-brand small {
+    display: block;
+    font-family: var(--sans);
+    font-size: 7px;
+    letter-spacing: 0.4em;
+    color: var(--wine);
+    margin-top: 2px;
+  }
+  .phone-card {
+    margin-top: 16px;
+    background: rgba(255, 255, 255, 0.6);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 14px;
+    backdrop-filter: blur(10px);
+  }
+  .phone-card-title {
+    font-family: var(--serif);
+    font-size: 13px;
+    color: var(--ink);
+    margin-bottom: 6px;
+  }
+  .phone-card-sub {
+    font-size: 9px;
+    color: var(--stone);
+    letter-spacing: 0.1em;
+  }
+  .phone-cta {
+    margin-top: auto;
+    background: var(--wine);
+    color: var(--bg-mist);
+    text-align: center;
+    padding: 11px;
+    border-radius: 6px;
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+  .phone-list {
+    margin-top: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .phone-list-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 9px 11px;
+    background: rgba(255, 255, 255, 0.45);
+    border: 1px solid var(--line-soft);
+    border-radius: 5px;
+    font-size: 10px;
+    color: var(--ink);
+  }
+  .phone-list-item span:last-child { color: var(--wine); font-family: var(--serif); font-style: italic; font-size: 11px; }
+
+  /* ─────────────  VISIT  ───────────── */
+  .visit {
+    background: var(--bg-soft);
+    color: var(--ink);
+  }
+  .visit .section-head h2 { color: var(--ink); }
+  .visit .section-head h2 em { color: var(--wine); }
+  .visit .section-head p { color: var(--muted); }
+  .visit .eyebrow { color: var(--wine); }
+
+  .visit-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    max-width: 980px;
+    margin: 0 auto;
+  }
+  .visit-card {
+    background: var(--bg-mist);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 36px 28px;
+    text-align: center;
+    transition: transform .3s, box-shadow .3s, border-color .3s;
+  }
+  .visit-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px -18px rgba(46, 42, 36, 0.18);
+    border-color: rgba(139, 58, 58, 0.3);
+  }
+  .visit-card .ico {
+    width: 36px;
+    height: 36px;
+    margin: 0 auto 18px;
+    color: var(--wine);
+  }
+  .visit-card h4 {
+    font-family: var(--sans);
+    font-size: 11px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--stone);
+    font-weight: 500;
+    margin-bottom: 14px;
+  }
+  .visit-card p {
+    font-family: var(--serif);
+    font-size: 20px;
+    color: var(--ink);
+    line-height: 1.4;
+  }
+  .visit-card p em { color: var(--wine); font-style: italic; }
+  .visit-card a:hover { color: var(--wine); }
+
+  /* ─────────────  FOOTER  ───────────── */
+  footer {
+    background: var(--bg-stone);
+    color: var(--ink);
+    padding: 80px 0 40px;
+    text-align: center;
+    border-top: 1px solid var(--line);
+  }
+  .footer-brand {
+    font-family: var(--serif);
+    font-size: 42px;
+    letter-spacing: 0.2em;
+    margin-bottom: 6px;
+    color: var(--ink);
+  }
+  .footer-est {
+    font-size: 10px;
+    letter-spacing: 0.45em;
+    color: var(--wine);
+    text-transform: uppercase;
+    margin-bottom: 36px;
+  }
+  .socials {
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+    margin-bottom: 44px;
+  }
+  .socials a {
+    width: 44px;
+    height: 44px;
+    border: 1px solid var(--wine);
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--wine);
+    transition: background .25s, color .25s, border-color .25s;
+  }
+  .socials a:hover { background: var(--wine); color: var(--bg-mist); border-color: var(--wine); opacity: 1; }
+  .socials a.socials-winery:hover {
+    background: var(--bg-mist);
+    color: inherit;
+    border-color: var(--wine-deep);
+    box-shadow: 0 10px 28px -12px rgba(46, 42, 36, 0.22);
+  }
+  .socials a.socials-winery img {
+    width: 26px;
+    height: 26px;
+    object-fit: contain;
+    display: block;
+  }
+  .socials svg { width: 18px; height: 18px; }
+  .copyright {
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    color: var(--muted);
+    text-transform: uppercase;
+  }
+
+  /* ─────────────  RESPONSIVE  ───────────── */
+  @media (max-width: 880px) {
+    .nav-links { display: none; }
+    .nav-cta { display: none; }
+    .lang-switcher { display: none; }
+    .lang-switcher-mobile { display: inline-flex; }
+    .burger { display: block; }
+
+    .hero-bg { background-position: center 34%; }
+
+    .nav-mobile {
+      display: flex;
+      position: fixed;
+      inset: 0;
+      background: rgba(245, 240, 229, 0.98);
+      backdrop-filter: blur(20px);
+      z-index: 40;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 28px;
+      transform: translateY(-100%);
+      transition: transform .4s ease;
+    }
+    .nav-mobile.open { transform: translateY(0); }
+    .nav-mobile a {
+      font-family: var(--serif);
+      font-size: 28px;
+      color: var(--ink);
+      font-weight: 400;
+    }
+    .nav-mobile a:hover { color: var(--wine); }
+    .nav-mobile .nav-cta {
+      display: inline-flex;
+      margin-top: 16px;
+      font-family: var(--sans);
+      font-size: 11px;
+    }
+
+    .about-grid { grid-template-columns: 1fr; }
+    .about-visual { aspect-ratio: 4/4; max-width: 480px; margin: 0 auto; }
+    .about-facts { grid-template-columns: repeat(3, 1fr); gap: 12px; }
+    .fact .num { font-size: 30px; }
+    .fact .lbl { font-size: 9px; letter-spacing: 0.18em; }
+
+    .menu-grid { grid-template-columns: 1fr; gap: 0; }
+
+    .app-card { grid-template-columns: 1fr; text-align: center; }
+    .app-info p { margin-left: auto; margin-right: auto; }
+    .app-feats { justify-content: center; }
+    .app-phone { max-width: 240px; }
+
+    .cellar { background-position: center 38%; }
+
+    .visit-grid { grid-template-columns: 1fr; }
+    .visit-card { padding: 28px 24px; }
+
+    .hero-actions { flex-direction: column; align-items: stretch; padding: 0 20px; }
+    .btn { justify-content: center; }
+  }
+
+  @media (max-width: 480px) {
+    .brand { font-size: 22px; letter-spacing: 0.14em; }
+    .hero-eyebrow { font-size: 10px; letter-spacing: 0.3em; }
+    .menu-tabs { gap: 4px 18px; }
+    .menu-tab { font-size: 10px; letter-spacing: 0.2em; }
+    .menu-item .name { font-size: 19px; }
+    .menu-item .price { font-size: 18px; }
+    .footer-brand { font-size: 32px; }
+  }
+
+  /* ─────────────  ARMENIAN OPTICAL SCALE  ─────────────
+     Noto Serif/Sans Armenian render visually ~14–18% larger than Cormorant/Inter
+     at the same font-size. Normalize the serif headings & body copy. */
+  html[lang="hy"] .hero-sub          { font-size: clamp(15px, 2.1vw, 21px); }
+  html[lang="hy"] .section-head h2   { font-size: clamp(34px, 5.4vw, 60px); }
+  html[lang="hy"] .about-text h3     { font-size: clamp(27px, 3.7vw, 44px); }
+  html[lang="hy"] .cellar h2         { font-size: clamp(34px, 5vw, 58px); }
+  html[lang="hy"] .app-info h2       { font-size: clamp(27px, 3.7vw, 44px); }
+  html[lang="hy"] .menu-item .name   { font-size: 19px; }
+  html[lang="hy"] .menu-item .price  { font-size: 18px; }
+  html[lang="hy"] .menu-item .desc   { font-size: 12px; }
+  html[lang="hy"] .visit-card p      { font-size: 17px; }
+  html[lang="hy"] .phone-card-title  { font-size: 12px; }
+
+  /* ─────────────  LANGUAGE SWITCHER  ───────────── */
+  .lang-switcher {
+    display: inline-flex;
+    align-items: center;
+    gap: 2px;
+    padding: 4px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: rgba(245, 240, 229, 0.55);
+    backdrop-filter: blur(6px);
+  }
+  .lang-switcher button {
+    font-family: var(--sans);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 6px 10px;
+    border-radius: 999px;
+    color: var(--ink-soft);
+    transition: background .2s, color .2s;
+  }
+  .lang-switcher button:hover { color: var(--wine); }
+  .lang-switcher button.active {
+    background: var(--wine);
+    color: var(--bg-mist);
+  }
+  .lang-switcher-mobile {
+    display: none;
+    justify-content: center;
+    margin-top: 16px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <a href="#top" class="brand">KEGHAR<small>Est. 1877</small></a>
+  <ul class="nav-links">
+    <li><a href="#about" data-i18n="nav.about">История</a></li>
+    <li><a href="#menu" data-i18n="nav.menu">Меню</a></li>
+    <li><a href="#cellar" data-i18n="nav.cellar">Погреб</a></li>
+    <li><a href="#app" data-i18n="nav.app">Приложение</a></li>
+    <li><a href="#visit" data-i18n="nav.contacts">Контакты</a></li>
+  </ul>
+  <div class="lang-switcher" role="group" aria-label="Язык">
+    <button type="button" data-lang="hy" aria-label="Հայերեն">HY</button>
+    <button type="button" data-lang="ru" aria-label="Русский">RU</button>
+    <button type="button" data-lang="en" aria-label="English">EN</button>
+  </div>
+  <button class="burger" id="burger" aria-label="Меню"><span></span><span></span><span></span></button>
+</nav>
+
+<div class="nav-mobile" id="navMobile">
+  <a href="#about" data-i18n="nav.about">История</a>
+  <a href="#menu" data-i18n="nav.menu">Меню</a>
+  <a href="#cellar" data-i18n="nav.cellar">Погреб</a>
+  <a href="#app" data-i18n="nav.app">Приложение</a>
+  <a href="#visit" data-i18n="nav.contacts">Контакты</a>
+  <div class="lang-switcher lang-switcher-mobile" role="group" aria-label="Язык">
+    <button type="button" data-lang="hy" aria-label="Հայերեն">HY</button>
+    <button type="button" data-lang="ru" aria-label="Русский">RU</button>
+    <button type="button" data-lang="en" aria-label="English">EN</button>
+  </div>
+</div>
+
+<!-- HERO -->
+<header class="hero" id="top">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">
+      <span class="dot"></span>
+      <span data-i18n="hero.loc">Ереван · Старый Норьк</span>
+      <span class="dot"></span>
+    </div>
+    <h1 class="hero-title display">Keghar<br><em>1877</em></h1>
+    <p class="hero-sub" data-i18n="hero.sub">Семейный ресторан армянской кухня и&nbsp;домашнего вина</p>
+    <div class="hero-actions">
+      <a href="#visit" class="btn btn-gold" data-i18n="hero.book">Забронировать стол</a>
+      <a href="#menu" class="btn btn-ghost" data-i18n="hero.menu">Смотреть меню</a>
+    </div>
+  </div>
+</header>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="wrap">
+    <div class="about-grid">
+      <div class="about-visual">
+        <div class="about-visual-num">1877</div>
+      </div>
+      <div class="about-text">
+        <span class="eyebrow" data-i18n="about.eyebrow">Наша история</span>
+        <h3 data-i18n-html="about.title">Сто пятьдесят лет <em>традиции</em>, передаваемой из рук в руки</h3>
+        <p data-i18n="about.p1">В старом квартале Норьк, среди тутовых деревьев и&nbsp;каменных дворов, семья делает вино с&nbsp;1877&nbsp;года. Каждое поколение бережно несёт ремесло своих предков&nbsp;— и&nbsp;сегодня мы открываем эти стены для гостей.</p>
+        <div class="about-facts">
+          <div class="fact"><div class="num">150+</div><div class="lbl" data-i18n="about.fact1">Лет ремеслу</div></div>
+          <div class="fact"><div class="num">5</div><div class="lbl" data-i18n="about.fact2">Поколений</div></div>
+          <div class="fact"><div class="num">6</div><div class="lbl" data-i18n="about.fact3">Сортов вина</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MENU -->
+<section class="menu" id="menu">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow"><span class="rule"></span><span data-i18n="menu.eyebrow">Гастрономия</span><span class="rule"></span></span>
+      <h2 class="display" data-i18n-html="menu.title">Армянский <em>стол</em></h2>
+      <p data-i18n="menu.p">Рецепты, проверенные временем. Готовим в&nbsp;дровяной печи, в&nbsp;тондыре и&nbsp;на&nbsp;живом огне&nbsp;— как делали наши деды.</p>
+    </div>
+
+    <div class="menu-tabs" role="tablist">
+      <button class="menu-tab active" data-tab="starters" data-i18n="menu.tab.starters">Закуски</button>
+      <button class="menu-tab" data-tab="salads" data-i18n="menu.tab.salads">Салаты</button>
+      <button class="menu-tab" data-tab="soups" data-i18n="menu.tab.soups">Супы</button>
+      <button class="menu-tab" data-tab="hot" data-i18n="menu.tab.hot">Горячее</button>
+      <button class="menu-tab" data-tab="khorovats" data-i18n="menu.tab.kh">Хоровац</button>
+      <button class="menu-tab" data-tab="pasta-sets" data-i18n="menu.tab.ps">Сеты и пасты</button>
+      <button class="menu-tab" data-tab="sides-sauces" data-i18n="menu.tab.ss">Гарниры и соусы</button>
+      <button class="menu-tab" data-tab="desserts" data-i18n="menu.tab.de">Десерты</button>
+      <button class="menu-tab" data-tab="drinks" data-i18n="menu.tab.dr">Напитки</button>
+      <button class="menu-tab" data-tab="bar" data-i18n="menu.tab.bar">Бар</button>
+      <button class="menu-tab" data-tab="wine" data-i18n="menu.tab.wine">Наши вина</button>
+    </div>
+
+    <!-- STARTERS -->
+    <div class="menu-panel active" data-panel="starters">
+      <div class="menu-grid">
+        <div class="menu-item"><div class="name" data-i18n="m.st1.n">Брускетта Микс</div><div class="price">4 000&nbsp;֏</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.st2.n">Армянское сырное ассорти</div><div class="price">5 500&nbsp;֏</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.st3.n">Европейское сырное ассорти</div><div class="price">6 000&nbsp;֏</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.st4.n">Армянское мясное ассорти</div><div class="price">6 000&nbsp;֏</div><div class="desc" data-i18n="m.st4.d">Филе, колбаса, бастурма, суджук</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.st5.n">Сцеженный мацони</div><div class="price">1 000&nbsp;֏</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.st6.n">Режан</div><div class="price">1 200&nbsp;֏</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.st7.n">Зелень</div><div class="price">1 200&nbsp;֏</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.st8.n">Острый перец</div><div class="price">500&nbsp;֏</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.st9.n">Лимон</div><div class="price">700&nbsp;֏</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.st10.n">Соленья (ассорти)</div><div class="price">1 500&nbsp;֏</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.st11.n">Оливки (ассорти)</div><div class="price">1 500&nbsp;֏</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.st12.n">Хлебная корзина</div><div class="price">600&nbsp;֏</div></div>
+      </div>
+    </div>
+
+    <!-- SALADS -->
+    <div class="menu-panel" data-panel="salads">
+      <div class="menu-grid">
+        <div class="menu-item"><div class="name" data-i18n="m.sa1.n">Летний салат</div><div class="price">1 800&nbsp;֏</div><div class="desc" data-i18n="m.sa1.d">Помидоры, огурцы, перец</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.sa2.n">Салат Буратта</div><div class="price">4 200&nbsp;֏</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.sa3.n">Салат из&nbsp;авелука</div><div class="price">2 000&nbsp;֏</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.sa4.n">Тайский салат</div><div class="price">3 900&nbsp;֏</div><div class="desc" data-i18n="m.sa4.d">Баклажаны, цуккини, болгарский перец, грибы, телятина</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.sa5.n">Греческий салат</div><div class="price">3 200&nbsp;֏</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.sa6.n">Цезарь</div><div class="price">3 200&nbsp;֏</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.sa7.n">Салат из&nbsp;курицы с&nbsp;тархуном</div><div class="price">3 200&nbsp;֏</div><div class="desc" data-i18n="m.sa7.d">Салат, эстрагон, куриная грудка</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.sa8.n">Салат из&nbsp;телятины</div><div class="price">3 800&nbsp;֏</div><div class="desc" data-i18n="m.sa8.d">Баклажаны, телятина</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.sa9.n">Овощной салат</div><div class="price">4 300&nbsp;֏</div><div class="desc" data-i18n="m.sa9.d">Руккола, перец, огурцы, помидор, авокадо</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.sa10.n">Родос</div><div class="price">4 500&nbsp;֏</div><div class="desc" data-i18n="m.sa10.d">Руккола, перец, сыр фета, телятина</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.sa11.n">Цезарь с&nbsp;креветками</div><div class="price">4 500&nbsp;֏</div><div class="desc" data-i18n="m.sa11.d">Креветки, листья салата</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.sa12.n">Le Rous с&nbsp;баклажанами</div><div class="price">4 500&nbsp;֏</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.sa13.n">Итальянский салат</div><div class="price">4 000&nbsp;֏</div><div class="desc" data-i18n="m.sa13.d">Помидоры черри, моцарелла, соус песто</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.sa14.n">Лосось с&nbsp;авокадо</div><div class="price">7 900&nbsp;֏</div><div class="desc" data-i18n="m.sa14.d">Руккола, лосось, помидор, авокадо</div></div>
+      </div>
+    </div>
+
+    <!-- SOUPS -->
+    <div class="menu-panel" data-panel="soups">
+      <div class="menu-grid">
+        <div class="menu-item"><div class="name" data-i18n="m.so1.n">Спас</div><div class="price">1 500&nbsp;֏</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.so2.n">Куриный суп</div><div class="price">2 000&nbsp;֏</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.so3.n">Крем-суп из&nbsp;помидоров</div><div class="price">2 000&nbsp;֏</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.so4.n">Грибной крем-суп</div><div class="price">2 000&nbsp;֏</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.so5.n">Острый суп из&nbsp;телятины</div><div class="price">2 500&nbsp;֏</div></div>
+      </div>
+    </div>
+
+    <!-- HOT DISHES -->
+    <div class="menu-panel" data-panel="hot">
+      <div class="menu-grid">
+        <div class="menu-item"><div class="name" data-i18n="m.ho1.n">Кегар</div><div class="price">8 300&nbsp;֏</div><div class="desc" data-i18n="m.ho1.d">Телятина, баклажаны, рис, винный соус</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.ho2.n">Хариса</div><div class="price">2 000&nbsp;֏</div><div class="desc" data-i18n="m.ho2.d">Курица, пшеница</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.ho3.n">Толма</div><div class="price">2 500&nbsp;֏</div><div class="desc" data-i18n="m.ho3.d">Говяжье мясо, виноградные листья</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.ho4.n">Хурджин</div><div class="price">4 400&nbsp;֏</div><div class="desc" data-i18n="m.ho4.d">Баранина, перец, помидоры</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.ho5.n">Хурджин с&nbsp;куриной грудкой</div><div class="price">3 500&nbsp;֏</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.ho6.n">Куриные крылышки</div><div class="price">3 300&nbsp;֏</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.ho7.n">Тжвжик</div><div class="price">3 600&nbsp;֏</div><div class="desc" data-i18n="m.ho7.d">Субпродукты телятины, рис</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.ho8.n">Хашлама</div><div class="price">4 000&nbsp;֏</div><div class="desc" data-i18n="m.ho8.d">Телятина, картофель, овощи</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.ho9.n">Форель с&nbsp;фирменным соусом</div><div class="price">4 500&nbsp;֏</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.ho10.n">Лопатка ягнёнка с&nbsp;пловом из&nbsp;ачара (полбы)</div><div class="price">6 000&nbsp;֏</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.ho11.n">Медальоны из&nbsp;телятины</div><div class="price">8 400&nbsp;֏</div><div class="desc" data-i18n="m.ho11.d">Телятина, грибы</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.ho12.n">Фирменные рёбрышки</div><div class="price">7 000&nbsp;֏</div><div class="desc" data-i18n="m.ho12.d">Рёбра, яблоко, перец, грибы</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.ho13.n">Яичница с&nbsp;помидорами</div><div class="price">2 000&nbsp;֏</div></div>
+      </div>
+    </div>
+
+    <!-- BARBECUE / KHOROVATS — 350g -->
+    <div class="menu-panel" data-panel="khorovats">
+      <div class="menu-grid">
+        <div class="menu-item"><div class="name" data-i18n="m.kh1.n">Картофель на&nbsp;углях</div><div class="price">1 200&nbsp;֏</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.kh2.n">Овощи на&nbsp;углях</div><div class="price">2 800&nbsp;֏</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.kh3.n">Куриные крылышки</div><div class="price">3 300&nbsp;֏</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.kh4.n">Куриная грудка</div><div class="price">3 300&nbsp;֏</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.kh5.n">Шашлык из&nbsp;цыплёнка</div><div class="price">2 400&nbsp;֏</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.kh6.n">Шашлык из&nbsp;свиной вырезки</div><div class="price">4 600&nbsp;֏</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.kh7.n">Шашлык из&nbsp;телятины</div><div class="price">6 900&nbsp;֏</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.kh8.n">Шашлык из&nbsp;ягнятины</div><div class="price">5 500&nbsp;֏</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.kh9.n">Свиная корейка</div><div class="price">5 500&nbsp;֏</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.kh10.n">Свиные рёбрышки</div><div class="price">5 500&nbsp;֏</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.kh11.n">Шашлык из&nbsp;форели</div><div class="price">7 500&nbsp;֏</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.kh12.n">Стерлядь на&nbsp;гриле</div><div class="price">28 000&nbsp;֏</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.kh13.n">Шашлык-микс</div><div class="price">36 000&nbsp;֏</div></div>
+      </div>
+      <div class="menu-subnote" data-i18n="menu.kh.note">Порция 350&nbsp;г</div>
+    </div>
+
+    <!-- SETS + PASTA -->
+    <div class="menu-panel" data-panel="pasta-sets">
+      <div class="menu-grid">
+        <div class="menu-item"><div class="name" data-i18n="m.ps1.n">Сет на&nbsp;6 персон</div><div class="price">29 000&nbsp;֏</div><div class="desc" data-i18n="m.ps1.d">Свиная корейка (800&nbsp;г), свиные рёбрышки (800&nbsp;г), свиная вырезка (800&nbsp;г), картофель на&nbsp;углях (1 порция)</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.ps2.n">Сет на&nbsp;4 персоны</div><div class="price">19 300&nbsp;֏</div><div class="desc" data-i18n="m.ps2.d">Свиная корейка (400&nbsp;г), свиные рёбрышки (400&nbsp;г), свиная вырезка (400&nbsp;г), картофель на&nbsp;углях (1 порция)</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.ps3.n">Паста Альфредо</div><div class="price">2 900&nbsp;֏</div><div class="desc" data-i18n="m.ps3.d">Пенне, грибы, куриная грудка</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.ps4.n">Паста с&nbsp;сыром</div><div class="price">2 900&nbsp;֏</div><div class="desc" data-i18n="m.ps4.d">Пенне, сыр</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.ps5.n">Паста с&nbsp;креветками</div><div class="price">4 500&nbsp;֏</div><div class="desc" data-i18n="m.ps5.d">Пенне, креветки</div></div>
+      </div>
+    </div>
+
+    <!-- SIDES + SAUCES -->
+    <div class="menu-panel" data-panel="sides-sauces">
+      <div class="menu-grid">
+        <div class="menu-item"><div class="name" data-i18n="m.ss1.n">Ризотто</div><div class="price">3 000&nbsp;֏</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.ss2.n">Плов из&nbsp;чёрного риса</div><div class="price">8 000&nbsp;֏</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.ss3.n">Плов из&nbsp;ачара (полбы)</div><div class="price">2 000&nbsp;֏</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.ss4.n">Овощи гриль</div><div class="price">4 000&nbsp;֏</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.ss5.n">Картофель по-деревенски</div><div class="price">1 500&nbsp;֏</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.ss6.n">Винный соус «Арени»</div><div class="price">650&nbsp;֏</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.ss7.n">Винный соус «Воскеат»</div><div class="price">650&nbsp;֏</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.ss8.n">Сырный соус</div><div class="price">2 000&nbsp;֏</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.ss9.n">Соус «Цезарь»</div><div class="price">650&nbsp;֏</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.ss10.n">Красный соус для&nbsp;шашлыка</div><div class="price">650&nbsp;֏</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.ss11.n">Грибной соус</div><div class="price">650&nbsp;֏</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.ss12.n">Соус «Песто»</div><div class="price">800&nbsp;֏</div></div>
+      </div>
+    </div>
+
+    <!-- DESSERTS -->
+    <div class="menu-panel" data-panel="desserts">
+      <div class="menu-grid">
+        <div class="menu-item"><div class="name" data-i18n="m.de1.n">Брауни</div><div class="price">2 000&nbsp;֏</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.de2.n">Штрудель</div><div class="price">2 000&nbsp;֏</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.de3.n">Бисквит с&nbsp;апельсином</div><div class="price">1 800&nbsp;֏</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.de4.n">Гата</div><div class="price">1 000&nbsp;֏</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.de5.n">Пахлава</div><div class="price">2 500&nbsp;֏</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.de6.n">Варенье</div><div class="price">1 000&nbsp;֏</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.de7.n">Десерт-мороженое «Анит»</div><div class="price">2 000&nbsp;֏</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.de8.n">Арбуз</div><div class="price">2 000&nbsp;֏</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.de9.n">Дыня</div><div class="price">2 000&nbsp;֏</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.de10.n">Фруктовое ассорти</div><div class="price">5 000&nbsp;֏</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.de11.n">Мороженое</div><div class="price">1 000&nbsp;֏</div></div>
+      </div>
+    </div>
+
+
+    <!-- DRINKS (NON-ALCOHOLIC) -->
+    <div class="menu-panel" data-panel="drinks">
+      <h3 class="menu-subhead" data-i18n="menu.sub.soft">Освежающие напитки</h3>
+      <div class="menu-grid">
+        <div class="menu-item"><div class="name" data-i18n="m.dr1.n">Вода</div><div class="price">500&nbsp;֏</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.dr2.n">Минеральная вода</div><div class="price">500&nbsp;֏</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.dr3.n">Кола, Фанта, Спрайт</div><div class="price">500&nbsp;֏</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.dr4.n">Натуральный сок</div><div class="price">700&nbsp;֏</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.dr5.n">Тоник</div><div class="price">700&nbsp;֏</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.dr6.n">Red Bull</div><div class="price">1 600&nbsp;֏</div></div>
+      </div>
+
+      <h3 class="menu-subhead" data-i18n="menu.sub.fresh">Фреш и смузи</h3>
+      <div class="menu-grid">
+        <div class="menu-item"><div class="name" data-i18n="m.dr7.n">Грейпфрут</div><div class="price">2 200&nbsp;֏</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.dr8.n">Апельсин</div><div class="price">2 200&nbsp;֏</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.dr9.n">Яблоко</div><div class="price">2 200&nbsp;֏</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.dr10.n">Морковь</div><div class="price">1 200&nbsp;֏</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.dr11.n">Банан</div><div class="price">1 800&nbsp;֏</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.dr12.n">Клубника</div><div class="price">2 000&nbsp;֏</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.dr13.n">Гранат</div><div class="price">5 000&nbsp;֏</div></div>
+      </div>
+
+      <h3 class="menu-subhead" data-i18n="menu.sub.coffee">Кофе</h3>
+      <div class="menu-grid">
+        <div class="menu-item"><div class="name" data-i18n="m.dr14.n">Восточный</div><div class="price">600&nbsp;֏</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.dr15.n">Парижский</div><div class="price">700&nbsp;֏</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.dr16.n">Эспрессо</div><div class="price">1 000&nbsp;֏</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.dr17.n">Эспрессо Лунго</div><div class="price">1 000&nbsp;֏</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.dr18.n">Эспрессо Макиато</div><div class="price">1 200&nbsp;֏</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.dr19.n">Американо</div><div class="price">1 000&nbsp;֏</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.dr20.n">Капучино</div><div class="price">1 200&nbsp;֏</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.dr21.n">Капучино Арома</div><div class="price">1 500&nbsp;֏</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.dr22.n">Латте</div><div class="price">1 200&nbsp;֏</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.dr23.n">Латте Арома</div><div class="price">1 500&nbsp;֏</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.dr24.n">Гляссе</div><div class="price">1 500&nbsp;֏</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.dr25.n">Норкский Кегар</div><div class="price">1 200&nbsp;֏</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.dr26.n">Айриш-кофе</div><div class="price">2 000&nbsp;֏</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.dr27.n">Французский кофе</div><div class="price">1 500&nbsp;֏</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.dr28.n">Раф-кофе</div><div class="price">1 200&nbsp;֏</div></div>
+      </div>
+
+      <h3 class="menu-subhead" data-i18n="menu.sub.tea">Чай</h3>
+      <div class="menu-grid">
+        <div class="menu-item"><div class="name" data-i18n="m.dr29.n">Чёрный Ассам</div><div class="price">1 000&nbsp;֏</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.dr30.n">Эрл Грей</div><div class="price">1 000&nbsp;֏</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.dr31.n">Зелёная Сенча</div><div class="price">1 000&nbsp;֏</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.dr32.n">Жасминовый</div><div class="price">1 000&nbsp;֏</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.dr33.n">Фруктовый</div><div class="price">1 000&nbsp;֏</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.dr34.n">Цитрусовый</div><div class="price">1 800&nbsp;֏</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.dr35.n">Облепиховый</div><div class="price">1 800&nbsp;֏</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.dr36.n">Малиновый</div><div class="price">1 800&nbsp;֏</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.dr37.n">С имбирём</div><div class="price">1 800&nbsp;֏</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.dr38.n">Армянский букет</div><div class="price">1 000&nbsp;֏</div></div>
+      </div>
+
+      <h3 class="menu-subhead" data-i18n="menu.sub.lem">Лимонад (0,3 л / 1 л)</h3>
+      <div class="menu-grid">
+        <div class="menu-item"><div class="name" data-i18n="m.dr39.n">Норкский Кегар</div><div class="price">1 800 / 3 500&nbsp;֏</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.dr40.n">Манго-маракуйя</div><div class="price">1 800 / 3 500&nbsp;֏</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.dr41.n">Ягодный</div><div class="price">1 800 / 3 500&nbsp;֏</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.dr42.n">Цитрусовый</div><div class="price">1 800 / 3 500&nbsp;֏</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.dr43.n">Имбирь и грейпфрут</div><div class="price">1 800 / 3 500&nbsp;֏</div></div>
+      </div>
+
+      <h3 class="menu-subhead" data-i18n="menu.sub.nac">Безалкогольные коктейли</h3>
+      <div class="menu-grid">
+        <div class="menu-item"><div class="name" data-i18n="m.dr44.n">Норкский Кегар</div><div class="price">1 800&nbsp;֏</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.dr45.n">Мохито</div><div class="price">1 500&nbsp;֏</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.dr46.n">Пина Колада</div><div class="price">1 300&nbsp;֏</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.dr47.n">Ванильный шоколад</div><div class="price">1 500&nbsp;֏</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.dr48.n">Фруктовый</div><div class="price">1 800&nbsp;֏</div></div>
+      </div>
+    </div>
+
+    <!-- BAR (ALCOHOL) -->
+    <div class="menu-panel" data-panel="bar">
+      <h3 class="menu-subhead" data-i18n="menu.sub.ac">Алкогольные коктейли</h3>
+      <div class="menu-grid">
+        <div class="menu-item"><div class="name" data-i18n="m.bar1.n">Норкский Кегар</div><div class="price">2 800&nbsp;֏</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.bar2.n">Мохито</div><div class="price">3 000&nbsp;֏</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.bar3.n">Маргарита классик</div><div class="price">2 600&nbsp;֏</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.bar4.n">Пинья Колада</div><div class="price">2 300&nbsp;֏</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.bar5.n">Космополитен</div><div class="price">2 200&nbsp;֏</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.bar6.n">Дайкири</div><div class="price">2 800&nbsp;֏</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.bar7.n">Куба Либре</div><div class="price">3 000&nbsp;֏</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.bar8.n">Электрик Маргарита</div><div class="price">2 300&nbsp;֏</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.bar9.n">Негрони</div><div class="price">2 500&nbsp;֏</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.bar10.n">Джин-тоник</div><div class="price">2 500&nbsp;֏</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.bar11.n">Текила Санрайз</div><div class="price">2 800&nbsp;֏</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.bar12.n">Эспрессо Мартини</div><div class="price">2 300&nbsp;֏</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.bar13.n">Апероль Шприц</div><div class="price">3 500&nbsp;֏</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.bar14.n">Виски Сауэр</div><div class="price">3 000&nbsp;֏</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.bar15.n">Long Island Iced Tea</div><div class="price">3 500&nbsp;֏</div></div>
+      </div>
+
+      <h3 class="menu-subhead" data-i18n="menu.sub.beer">Пиво</h3>
+      <div class="menu-grid">
+        <div class="menu-item"><div class="name" data-i18n="m.bar16.n">Киликия</div><div class="price">1 000&nbsp;֏</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.bar17.n">Баварский эль</div><div class="price">3 000&nbsp;֏</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.bar18.n">Баварский стаут</div><div class="price">3 000&nbsp;֏</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.bar19.n">Каспийский вайцен</div><div class="price">2 200&nbsp;֏</div></div>
+      </div>
+
+      <h3 class="menu-subhead" data-i18n="menu.sub.vodka">Водка (50 мл / бутылка)</h3>
+      <div class="menu-grid">
+        <div class="menu-item"><div class="name" data-i18n="m.bar20.n">Grey Goose</div><div class="price">3 000 / 27 000&nbsp;֏</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.bar21.n">Absolut</div><div class="price">1 500 / 8 200&nbsp;֏</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.bar22.n">Онегин</div><div class="price">1 500 / 8 500&nbsp;֏</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.bar23.n">Zeppelin</div><div class="price">1 000 / 5 000&nbsp;֏</div></div>
+      </div>
+
+      <h3 class="menu-subhead" data-i18n="menu.sub.cognac">Коньяк</h3>
+      <div class="menu-grid">
+        <div class="menu-item"><div class="name" data-i18n="m.bar24.n">Арарат 5</div><div class="price">1 500&nbsp;֏</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.bar25.n">Али</div><div class="price">2 000&nbsp;֏</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.bar26.n">Ахтамар</div><div class="price">2 500&nbsp;֏</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.bar27.n">Васпуракан</div><div class="price">4 500&nbsp;֏</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.bar28.n">Наири</div><div class="price">7 000&nbsp;֏</div></div>
+      </div>
+
+      <h3 class="menu-subhead" data-i18n="menu.sub.whiskey">Виски</h3>
+      <div class="menu-grid">
+        <div class="menu-item"><div class="name" data-i18n="m.bar29.n">Ballantine&rsquo;s</div><div class="price">2 500&nbsp;֏</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.bar30.n">Jameson</div><div class="price">2 700&nbsp;֏</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.bar31.n">Jack Daniel&rsquo;s</div><div class="price">3 200&nbsp;֏</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.bar32.n">Chivas 12</div><div class="price">3 500&nbsp;֏</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.bar33.n">Chivas 18</div><div class="price">6 500&nbsp;֏</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.bar34.n">Glenfiddich 12</div><div class="price">5 700&nbsp;֏</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.bar35.n">Glenfiddich 15</div><div class="price">7 500&nbsp;֏</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.bar36.n">Glenlivet 12</div><div class="price">4 500&nbsp;֏</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.bar37.n">Glenlivet 15</div><div class="price">6 500&nbsp;֏</div></div>
+      </div>
+
+      <h3 class="menu-subhead" data-i18n="menu.sub.aperitif">Аперитив</h3>
+      <div class="menu-grid">
+        <div class="menu-item"><div class="name" data-i18n="m.bar38.n">Martini Bianco</div><div class="price">1 500&nbsp;֏</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.bar39.n">Martini Extra Dry</div><div class="price">1 500&nbsp;֏</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.bar40.n">Martini Rosso</div><div class="price">1 500&nbsp;֏</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.bar41.n">Martini Rosato</div><div class="price">1 500&nbsp;֏</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.bar42.n">Campari</div><div class="price">2 100&nbsp;֏</div></div>
+      </div>
+
+      <h3 class="menu-subhead" data-i18n="menu.sub.liqueur">Ликёр</h3>
+      <div class="menu-grid">
+        <div class="menu-item"><div class="name" data-i18n="m.bar43.n">Jägermeister</div><div class="price">2 100&nbsp;֏</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.bar44.n">Aperol</div><div class="price">3 500&nbsp;֏</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.bar45.n">Baileys</div><div class="price">2 300&nbsp;֏</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.bar46.n">Sambuca</div><div class="price">1 500&nbsp;֏</div></div>
+        <div class="menu-item"><div class="name" data-i18n="m.bar47.n">Absinthe</div><div class="price">3 000&nbsp;֏</div></div>
+      </div>
+    </div>
+
+    <!-- KEGHAR HOUSE WINES -->
+    <div class="menu-panel" data-panel="wine">
+      <p class="menu-intro" data-i18n-html="menu.wine.intro">Из&nbsp;нашей <em>150-летней норкской марани</em></p>
+      <div class="menu-grid">
+        <div class="menu-item">
+          <div class="name" data-i18n="m.wn1.n">1 · Арени — красное сухое</div>
+          <div class="price">2 300 / 10 500&nbsp;֏</div>
+          <div class="desc" data-i18n="m.wn1.d">Аромат красных ягод; насыщенный, сложный и гармоничный вкус. К мясным закускам и грилю. Сорт «Арени» · 4 месяца выдержки в бочке</div>
+        </div>
+        <div class="menu-item">
+          <div class="name" data-i18n="m.wn2.n">2 · Воскеат — белое сухое</div>
+          <div class="price">2 300 / 10 500&nbsp;֏</div>
+          <div class="desc" data-i18n="m.wn2.d">Многогранный фруктовый букет, гармоничный вкус, ярко-соломенный цвет. К лёгким холодным закускам, рыбе и зрелым сырам. Сорт «Воскеат» · 1,5 месяца выдержки</div>
+        </div>
+        <div class="menu-item">
+          <div class="name" data-i18n="m.wn3.n">3 · Арени Караси — красное сухое</div>
+          <div class="price">2 300 / 10 500&nbsp;֏</div>
+          <div class="desc" data-i18n="m.wn3.d">Плотный, хорошо структурированный вкус с ярким ароматом спелых ягод; рубиново-красный цвет. К мясным и копчёным закускам, мясу под соусом. Сорт «Арени» · 12 месяцев в кàрасе (глиняная амфора)</div>
+        </div>
+        <div class="menu-item">
+          <div class="name" data-i18n="m.wn4.n">4 · Кангун — белое сухое</div>
+          <div class="price">2 300 / 10 500&nbsp;֏</div>
+          <div class="desc" data-i18n="m.wn4.d">Ноты жёлтых фруктов, белой айвы и абрикоса с тонами спелого персика; светло-соломенный цвет. К паровой рыбе, морепродуктам, салатам и грилю. Сорт «Кангун» (Армавир) · 4 месяца выдержки</div>
+        </div>
+        <div class="menu-item">
+          <div class="name" data-i18n="m.wn5.n">5 · Арени Розе — розовое сухое</div>
+          <div class="price">2 300 / 10 500&nbsp;֏</div>
+          <div class="desc" data-i18n="m.wn5.d">Тонкие ноты земляники, клубники и малины; ярко-розовый цвет. К паровой рыбе, морепродуктам, лёгким закускам и грилю с овощами. Сорт «Арени» · 1,5 месяца выдержки</div>
+        </div>
+        <div class="menu-item">
+          <div class="name" data-i18n="m.wn6.n">6 · Кармраюйт — красное сухое</div>
+          <div class="price">2 300 / 10 500&nbsp;֏</div>
+          <div class="desc" data-i18n="m.wn6.d">Сложный и нежный вкус с оттенками земляники и малины; ароматика тёрна, чёрной смородины, сливы, граната и специй. К морепродуктам, лёгким закускам и грилю. Сорт «Кармраюйт» (Армавир) · 4 месяца выдержки</div>
+        </div>
+        <div class="menu-item">
+          <div class="name" data-i18n="m.wn7.n">7 · Арарат — белое сухое · лимитированный выпуск «70 бутылок»</div>
+          <div class="price">72 000&nbsp;֏ / 750 мл</div>
+          <div class="desc" data-i18n="m.wn7.d">Лёгкий и сложный вкус с минеральным послевкусием и приятной горчинкой; золотисто-соломенный цвет. Выраженный аромат луговых трав. К морепродуктам, холодным закускам, паровой и гриль-рыбе, хоровацу</div>
+        </div>
+      </div>
+      <div class="menu-subnote" data-i18n="menu.wine.note">Цена указана за 150&nbsp;мл / 750&nbsp;мл</div>
+    </div>
+    <div class="menu-note" data-i18n="menu.service">+10% сервисный сбор</div>
+  </div>
+</section>
+
+<!-- CELLAR FEATURE -->
+<section class="cellar" id="cellar">
+  <div class="cellar-mark" data-i18n="cellar.mark">Погреб</div>
+  <div class="wrap">
+    <span class="eyebrow"><span class="rule"></span><span data-i18n="cellar.eyebrow">Наш винный погреб</span><span class="rule"></span></span>
+    <h2 data-i18n-html="cellar.title">«Каменные своды нашего <em>винного погреба</em> старше любой семейной фотографии»</h2>
+    <p data-i18n="cellar.p">Спуститесь по&nbsp;каменной лестнице в&nbsp;древний погреб, где в&nbsp;карасах созревает вино, а&nbsp;запах туфа и&nbsp;виноградной лозы рассказывает историю быстрее любого экскурсовода.</p>
+  </div>
+</section>
+
+<!-- APP BANNER -->
+<section class="app" id="app">
+  <div class="wrap">
+    <div class="app-card">
+      <div class="app-info">
+        <span class="eyebrow" data-i18n="app.eyebrow">Keghar для iPhone</span>
+        <h2 data-i18n-html="app.title">Бронь стола, меню и&nbsp;дегустации&nbsp;— <em>в&nbsp;одном касании</em></h2>
+        <p data-i18n="app.p">Сохраните любимые блюда, заказывайте навынос, бронируйте отдельный зал в&nbsp;погребе и&nbsp;получайте приглашения на&nbsp;винные вечера первыми.</p>
+
+        <a href="#" class="app-store" aria-label="Download on the App Store">
+          <svg viewBox="0 0 384 512" xmlns="http://www.w3.org/2000/svg" fill="currentColor" aria-hidden="true">
+            <path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/>
+          </svg>
+          <div class="app-store-text">
+            <small>Download on the</small>
+            <strong>App Store</strong>
+          </div>
+        </a>
+
+        <ul class="app-feats">
+          <li data-i18n="app.feat1">Бронь стола</li>
+          <li data-i18n="app.feat2">Карта вин</li>
+          <li data-i18n="app.feat3">События в погребе</li>
+        </ul>
+      </div>
+
+      <div class="app-phone" aria-hidden="true">
+        <div class="phone-frame">
+          <div class="phone-screen">
+            <div class="phone-notch"></div>
+            <div class="phone-brand">KEGHAR<small>EST. 1877</small></div>
+            <div class="phone-card">
+              <div class="phone-card-title" data-i18n="app.phone.title">Вечер в&nbsp;марани</div>
+              <div class="phone-card-sub" data-i18n="app.phone.sub">ПТ · 19:00 · 4 ПЕРСОНЫ</div>
+            </div>
+            <div class="phone-list">
+              <div class="phone-list-item"><span>Арени Reserve</span><span>7 200 ֏</span></div>
+              <div class="phone-list-item"><span data-i18n="app.phone.item">Толма</span><span>3 200 ֏</span></div>
+              <div class="phone-list-item"><span data-i18n="app.phone.item2">Хашлама</span><span>4 800 ֏</span></div>
+            </div>
+            <div class="phone-cta" style="margin-top:14px" data-i18n="app.phone.cta">Забронировать</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VISIT -->
+<section class="visit" id="visit">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow"><span class="rule"></span><span data-i18n="visit.eyebrow">Гостям</span><span class="rule"></span></span>
+      <h2 class="display" data-i18n-html="visit.title">Найти <em>нас</em></h2>
+      <p data-i18n="visit.p">Старый Норьк, тихие улочки выше центра. Поднимитесь к&nbsp;нам&nbsp;— и&nbsp;время замедлится.</p>
+    </div>
+
+    <div class="visit-grid">
+      <div class="visit-card">
+        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-7.5-7-12a7 7 0 0 1 14 0c0 4.5-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/></svg>
+        <h4 data-i18n="visit.addr.h">Адрес</h4>
+        <p data-i18n-html="visit.addr.p"><a href="https://yandex.ru/maps/org/keghar/242512484480/?ll=44.537443%2C40.191330&amp;z=14" target="_blank" rel="noopener noreferrer">ул.&nbsp;Серо Ханзадяна&nbsp;94</a><br><em>Старый Норьк, Ереван</em></p>
+      </div>
+      <div class="visit-card">
+        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+        <h4 data-i18n="visit.hours.h">Время работы</h4>
+        <p data-i18n-html="visit.hours.p">Вт&nbsp;– Вс<br><em>14:00 – 00:00</em></p>
+      </div>
+      <div class="visit-card">
+        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.95.36 1.88.7 2.77a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.31-1.27a2 2 0 0 1 2.11-.45c.89.34 1.82.57 2.77.7A2 2 0 0 1 22 16.92z"/></svg>
+        <h4 data-i18n="visit.book.h">Бронь</h4>
+        <p data-i18n-html="visit.book.p"><a href="tel:+37495210000"><em>+374 44 22 00 44</em></a><br>Звонок или <a href="https://t.me/keghar1881?direct" target="_blank" rel="noopener noreferrer">Telegram</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="footer-brand">KEGHAR</div>
+    <div class="footer-est" data-i18n="footer.tag">Ресторан и винодельня · с 1877</div>
+
+    <div class="socials">
+      <a href="https://www.instagram.com/keghar_restaurant/" target="_blank" rel="noopener" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+      </a>
+      <a href="https://t.me/keghar1881" target="_blank" rel="noopener noreferrer" aria-label="Telegram">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+      </a>
+      <a href="https://www.facebook.com/Keghar1877/" target="_blank" rel="noopener" aria-label="Facebook">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 22v-8h2.7l.4-3.2h-3.1V8.8c0-.9.3-1.5 1.6-1.5h1.6V4.4c-.3 0-1.3-.1-2.4-.1-2.4 0-4 1.4-4 4.1v2.3H7.6V14h2.7v8h3.2z"/></svg>
+      </a>
+      <a href="https://www.tripadvisor.com/Restaurant_Review-g293932-d23594414-Reviews-Keghar_Restaurant-Yerevan.html" target="_blank" rel="noopener" aria-label="Tripadvisor">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 6c-2.6 0-5 .6-7 1.7H1l2.4 2.6a4.6 4.6 0 1 0 6.6 6.4l2 2.2 2-2.2a4.6 4.6 0 1 0 6.6-6.4L23 7.7h-4c-2-1.1-4.4-1.7-7-1.7zm-4.4 4.4a3.1 3.1 0 1 1 0 6.2 3.1 3.1 0 0 1 0-6.2zm8.8 0a3.1 3.1 0 1 1 0 6.2 3.1 3.1 0 0 1 0-6.2zm-8.8 1.5a1.6 1.6 0 1 0 0 3.2 1.6 1.6 0 0 0 0-3.2zm8.8 0a1.6 1.6 0 1 0 0 3.2 1.6 1.6 0 0 0 0-3.2z"/></svg>
+      </a>
+      <a href="https://norqimarani.am/" class="socials-winery" target="_blank" rel="noopener noreferrer" aria-label="Norqi Keghar — винодельня Norqi Marani" title="Norqi Keghar · norqimarani.am">
+        <img src="assets/norqi-marani-emblem.png" alt="" width="192" height="192" decoding="async" loading="lazy" />
+      </a>
+    </div>
+
+    <div class="copyright" data-i18n="footer.copy">© 1877 – 2026  ·  Ресторан Keghar  ·  Ереван, Армения</div>
+  </div>
+</footer>
+
+<script>
+  /* ──────────────  TRANSLATIONS  ────────────── */
+  const I18N = {
+    ru: {
+      'nav.about':'История', 'nav.menu':'Меню', 'nav.cellar':'Погреб',
+      'nav.app':'Приложение', 'nav.contacts':'Контакты', 'nav.book':'Забронировать',
+      'hero.loc':'Ереван · Старый Норьк',
+      'hero.sub':'Семейный ресторан армянской кухни и домашнего вина',
+      'hero.book':'Забронировать стол', 'hero.menu':'Смотреть меню',
+      'about.eyebrow':'Наша история',
+      'about.title':'Сто пятьдесят лет <em>традиции</em>, передаваемой из рук в руки',
+      'about.p1':'В старом квартале Норьк, среди тутовых деревьев и каменных дворов, семья делает вино с 1877 года. Каждое поколение бережно несёт ремесло своих предков — и сегодня мы открываем эти стены для гостей.',
+      'about.fact1':'Лет ремеслу', 'about.fact2':'Поколений', 'about.fact3':'Сортов вина',
+      'menu.eyebrow':'Гастрономия',
+      'menu.title':'Армянский <em>стол</em>',
+      'menu.p':'Рецепты, проверенные временем. Готовим в дровяной печи, в тонире и на живом огне — как делали наши деды.',
+      'menu.tab.starters':'Закуски','menu.tab.salads':'Салаты','menu.tab.soups':'Супы',
+      'menu.tab.hot':'Горячее','menu.tab.kh':'Хоровац','menu.tab.ps':'Сеты и пасты',
+      'menu.tab.ss':'Гарниры и соусы','menu.tab.de':'Десерты',
+      'menu.kh.note':'Порция 350 г','menu.service':'+10% сервисный сбор',
+      'm.st1.n':'Брускетта Микс',
+      'm.st2.n':'Армянское сырное ассорти',
+      'm.st3.n':'Европейское сырное ассорти',
+      'm.st4.n':'Армянское мясное ассорти','m.st4.d':'Филе, колбаса, бастурма, суджух',
+      'm.st5.n':'Сцеженный мацони','m.st6.n':'Режан','m.st7.n':'Зелень',
+      'm.st8.n':'Острый перец','m.st9.n':'Лимон',
+      'm.st10.n':'Соленья (ассорти)','m.st11.n':'Оливки (ассорти)','m.st12.n':'Хлебная корзина',
+      'm.sa1.n':'Летний салат','m.sa1.d':'Помидоры, огурцы, перец',
+      'm.sa2.n':'Салат Буратта','m.sa3.n':'Салат из авелука',
+      'm.sa4.n':'Тайский салат','m.sa4.d':'Баклажаны, цуккини, болгарский перец, грибы, телятина',
+      'm.sa5.n':'Греческий салат','m.sa6.n':'Цезарь',
+      'm.sa7.n':'Салат из курицы с тархуном','m.sa7.d':'Салат, эстрагон, куриная грудка',
+      'm.sa8.n':'Салат из телятины','m.sa8.d':'Баклажаны, телятина',
+      'm.sa9.n':'Овощной салат','m.sa9.d':'Руккола, перец, огурцы, помидор, авокадо',
+      'm.sa10.n':'Родос','m.sa10.d':'Руккола, перец, сыр фета, телятина',
+      'm.sa11.n':'Цезарь с креветками','m.sa11.d':'Креветки, листья салата',
+      'm.sa12.n':'Le Rous с баклажанами',
+      'm.sa13.n':'Итальянский салат','m.sa13.d':'Помидоры черри, моцарелла, соус песто',
+      'm.sa14.n':'Лосось с авокадо','m.sa14.d':'Руккола, лосось, помидор, авокадо',
+      'm.so1.n':'Спас','m.so2.n':'Куриный суп','m.so3.n':'Крем-суп из помидоров',
+      'm.so4.n':'Грибной крем-суп','m.so5.n':'Острый суп из телятины',
+      'm.ho1.n':'Кегар','m.ho1.d':'Телятина, баклажаны, рис, винный соус',
+      'm.ho2.n':'Хариса','m.ho2.d':'Курица, пшеница',
+      'm.ho3.n':'Толма','m.ho3.d':'Говяжье мясо, виноградные листья',
+      'm.ho4.n':'Хурджин','m.ho4.d':'Баранина, перец, помидоры',
+      'm.ho5.n':'Хурджин с куриной грудкой','m.ho6.n':'Куриные крылышки',
+      'm.ho7.n':'Тжвжик','m.ho7.d':'Субпродукты телятины, рис',
+      'm.ho8.n':'Хашлама','m.ho8.d':'Телятина, картофель, овощи',
+      'm.ho9.n':'Форель с фирменным соусом',
+      'm.ho10.n':'Лопатка ягнёнка с пловом из ачара (полбы)',
+      'm.ho11.n':'Медальоны из телятины','m.ho11.d':'Телятина, грибы',
+      'm.ho12.n':'Фирменные рёбрышки','m.ho12.d':'Рёбра, яблоко, перец, грибы',
+      'm.ho13.n':'Яичница с помидорами',
+      'm.kh1.n':'Картофель на углях','m.kh2.n':'Овощи на углях',
+      'm.kh3.n':'Куриные крылышки','m.kh4.n':'Куриная грудка',
+      'm.kh5.n':'Шашлык из цыплёнка','m.kh6.n':'Шашлык из свиной вырезки',
+      'm.kh7.n':'Шашлык из телятины','m.kh8.n':'Шашлык из ягнятины',
+      'm.kh9.n':'Свиная корейка','m.kh10.n':'Свиные рёбрышки',
+      'm.kh11.n':'Шашлык из форели','m.kh12.n':'Стерлядь на гриле','m.kh13.n':'Шашлык-микс',
+      'm.ps1.n':'Сет на 6 персон','m.ps1.d':'Свиная корейка (800 г), свиные рёбрышки (800 г), свиная вырезка (800 г), картофель на углях (1 порция)',
+      'm.ps2.n':'Сет на 4 персоны','m.ps2.d':'Свиная корейка (400 г), свиные рёбрышки (400 г), свиная вырезка (400 г), картофель на углях (1 порция)',
+      'm.ps3.n':'Паста Альфредо','m.ps3.d':'Пенне, грибы, куриная грудка',
+      'm.ps4.n':'Паста с сыром','m.ps4.d':'Пенне, сыр',
+      'm.ps5.n':'Паста с креветками','m.ps5.d':'Пенне, креветки',
+      'm.ss1.n':'Ризотто','m.ss2.n':'Плов из чёрного риса','m.ss3.n':'Плов из ачара (полбы)',
+      'm.ss4.n':'Овощи гриль','m.ss5.n':'Картофель по-деревенски',
+      'm.ss6.n':'Винный соус «Арени»','m.ss7.n':'Винный соус «Воскеат»',
+      'm.ss8.n':'Сырный соус','m.ss9.n':'Соус «Цезарь»',
+      'm.ss10.n':'Красный соус для шашлыка','m.ss11.n':'Грибной соус','m.ss12.n':'Соус «Песто»',
+      'm.de1.n':'Брауни','m.de2.n':'Штрудель','m.de3.n':'Бисквит с апельсином',
+      'm.de4.n':'Гата','m.de5.n':'Пахлава','m.de6.n':'Варенье',
+      'm.de7.n':'Десерт-мороженое «Анит»','m.de8.n':'Арбуз','m.de9.n':'Дыня',
+      'm.de10.n':'Фруктовое ассорти','m.de11.n':'Мороженое',
+      'menu.tab.dr':'Напитки','menu.tab.bar':'Бар',
+      'menu.sub.soft':'Освежающие напитки','menu.sub.fresh':'Фреш и смузи',
+      'menu.sub.coffee':'Кофе','menu.sub.tea':'Чай','menu.sub.lem':'Лимонад (0,3 л / 1 л)',
+      'menu.sub.nac':'Безалкогольные коктейли','menu.sub.ac':'Алкогольные коктейли',
+      'menu.sub.beer':'Пиво','menu.sub.vodka':'Водка (50 мл / бутылка)',
+      'menu.sub.cognac':'Коньяк','menu.sub.whiskey':'Виски',
+      'menu.sub.aperitif':'Аперитив','menu.sub.liqueur':'Ликёр',
+      'm.dr1.n':'Вода','m.dr2.n':'Минеральная вода','m.dr3.n':'Кола, Фанта, Спрайт',
+      'm.dr4.n':'Натуральный сок','m.dr5.n':'Тоник','m.dr6.n':'Red Bull',
+      'm.dr7.n':'Грейпфрут','m.dr8.n':'Апельсин','m.dr9.n':'Яблоко','m.dr10.n':'Морковь',
+      'm.dr11.n':'Банан','m.dr12.n':'Клубника','m.dr13.n':'Гранат',
+      'm.dr14.n':'Восточный','m.dr15.n':'Парижский','m.dr16.n':'Эспрессо',
+      'm.dr17.n':'Эспрессо Лунго','m.dr18.n':'Эспрессо Макиато','m.dr19.n':'Американо',
+      'm.dr20.n':'Капучино','m.dr21.n':'Капучино Арома','m.dr22.n':'Латте',
+      'm.dr23.n':'Латте Арома','m.dr24.n':'Гляссе','m.dr25.n':'Норкский Кегар',
+      'm.dr26.n':'Айриш-кофе','m.dr27.n':'Французский кофе','m.dr28.n':'Раф-кофе',
+      'm.dr29.n':'Чёрный Ассам','m.dr30.n':'Эрл Грей','m.dr31.n':'Зелёная Сенча',
+      'm.dr32.n':'Жасминовый','m.dr33.n':'Фруктовый','m.dr34.n':'Цитрусовый',
+      'm.dr35.n':'Облепиховый','m.dr36.n':'Малиновый','m.dr37.n':'С имбирём',
+      'm.dr38.n':'Армянский букет',
+      'm.dr39.n':'Норкский Кегар','m.dr40.n':'Манго-маракуйя','m.dr41.n':'Ягодный',
+      'm.dr42.n':'Цитрусовый','m.dr43.n':'Имбирь и грейпфрут',
+      'm.dr44.n':'Норкский Кегар','m.dr45.n':'Мохито','m.dr46.n':'Пина Колада',
+      'm.dr47.n':'Ванильный шоколад','m.dr48.n':'Фруктовый',
+      'm.bar1.n':'Норкский Кегар','m.bar2.n':'Мохито','m.bar3.n':'Маргарита классик',
+      'm.bar4.n':'Пинья Колада','m.bar5.n':'Космополитен','m.bar6.n':'Дайкири',
+      'm.bar7.n':'Куба Либре','m.bar8.n':'Электрик Маргарита','m.bar9.n':'Негрони',
+      'm.bar10.n':'Джин-тоник','m.bar11.n':'Текила Санрайз','m.bar12.n':'Эспрессо Мартини',
+      'm.bar13.n':'Апероль Шприц','m.bar14.n':'Виски Сауэр','m.bar15.n':'Лонг Айленд Айс Ти',
+      'm.bar16.n':'Киликия','m.bar17.n':'Баварский эль','m.bar18.n':'Баварский стаут',
+      'm.bar19.n':'Каспийский вайцен',
+      'm.bar20.n':'Grey Goose','m.bar21.n':'Absolut','m.bar22.n':'Онегин','m.bar23.n':'Zeppelin',
+      'm.bar24.n':'Арарат 5','m.bar25.n':'Али','m.bar26.n':'Ахтамар',
+      'm.bar27.n':'Васпуракан','m.bar28.n':'Наири',
+      'm.bar29.n':'Ballantine\u2019s','m.bar30.n':'Jameson','m.bar31.n':'Jack Daniel\u2019s',
+      'm.bar32.n':'Chivas 12','m.bar33.n':'Chivas 18',
+      'm.bar34.n':'Glenfiddich 12','m.bar35.n':'Glenfiddich 15',
+      'm.bar36.n':'Glenlivet 12','m.bar37.n':'Glenlivet 15',
+      'm.bar38.n':'Martini Bianco','m.bar39.n':'Martini Extra Dry',
+      'm.bar40.n':'Martini Rosso','m.bar41.n':'Martini Rosato','m.bar42.n':'Campari',
+      'm.bar43.n':'Jägermeister','m.bar44.n':'Aperol','m.bar45.n':'Baileys',
+      'm.bar46.n':'Sambuca','m.bar47.n':'Absinthe',
+      'menu.tab.wine':'Наши вина',
+      'menu.wine.intro':'Из нашей <em>150-летней норкской марани</em>',
+      'menu.wine.note':'Цена указана за 150 мл / 750 мл',
+      'm.wn1.n':'1 · Арени — красное сухое',
+      'm.wn1.d':'Аромат красных ягод; насыщенный, сложный и гармоничный вкус. К мясным закускам и грилю. Сорт «Арени» · 4 месяца выдержки в бочке',
+      'm.wn2.n':'2 · Воскеат — белое сухое',
+      'm.wn2.d':'Многогранный фруктовый букет, гармоничный вкус, ярко-соломенный цвет. К лёгким холодным закускам, рыбе и зрелым сырам. Сорт «Воскеат» · 1,5 месяца выдержки',
+      'm.wn3.n':'3 · Арени Караси — красное сухое',
+      'm.wn3.d':'Плотный, хорошо структурированный вкус с ярким ароматом спелых ягод; рубиново-красный цвет. К мясным и копчёным закускам, мясу под соусом. Сорт «Арени» · 12 месяцев в карасе (глиняная амфора)',
+      'm.wn4.n':'4 · Кангун — белое сухое',
+      'm.wn4.d':'Ноты жёлтых фруктов, белой айвы и абрикоса с тонами спелого персика; светло-соломенный цвет. К паровой рыбе, морепродуктам, салатам и грилю. Сорт «Кангун» (Армавир) · 4 месяца выдержки',
+      'm.wn5.n':'5 · Арени Розе — розовое сухое',
+      'm.wn5.d':'Тонкие ноты земляники, клубники и малины; ярко-розовый цвет. К паровой рыбе, морепродуктам, лёгким закускам и грилю с овощами. Сорт «Арени» · 1,5 месяца выдержки',
+      'm.wn6.n':'6 · Кармраюйт — красное сухое',
+      'm.wn6.d':'Сложный и нежный вкус с оттенками земляники и малины; ароматика тёрна, чёрной смородины, сливы, граната и специй. К морепродуктам, лёгким закускам и грилю. Сорт «Кармраюйт» (Армавир) · 4 месяца выдержки',
+      'm.wn7.n':'7 · Арарат — белое сухое · лимитированный выпуск «70 бутылок»',
+      'm.wn7.d':'Лёгкий и сложный вкус с минеральным послевкусием и приятной горчинкой; золотисто-соломенный цвет. Выраженный аромат луговых трав. К морепродуктам, холодным закускам, паровой и гриль-рыбе, хоровацу',
+
+
+      'cellar.mark':'Погреб', 'cellar.eyebrow':'Наш винный погреб',
+      'cellar.title':'«Каменные своды нашего <em>винного погреба</em> старше любой семейной фотографии»',
+      'cellar.p':'Спуститесь по каменной лестнице в древний погреб, где в карасах созревает вино, а запах туфа и виноградной лозы рассказывает историю быстрее любого экскурсовода.',
+      'app.eyebrow':'Keghar для iPhone',
+      'app.title':'Бронь стола, меню и дегустации — <em>в одном касании</em>',
+      'app.p':'Сохраните любимые блюда, заказывайте навынос, бронируйте отдельный зал в погребе и получайте приглашения на винные вечера первыми.',
+      'app.feat1':'Бронь стола','app.feat2':'Карта вин','app.feat3':'События в погребе',
+      'app.phone.title':'Вечер в погребе','app.phone.sub':'ПТ · 19:00 · 4 ПЕРСОНЫ',
+      'app.phone.item':'Толма','app.phone.item2':'Хашлама','app.phone.cta':'Забронировать',
+      'visit.eyebrow':'Гостям','visit.title':'Найти <em>нас</em>',
+      'visit.p':'Старый Норьк, тихие улочки выше центра. Поднимитесь к нам — и время замедлится.',
+      'visit.addr.h':'Адрес',
+      'visit.addr.p':'<a href="https://yandex.ru/maps/org/keghar/242512484480/?ll=44.537443%2C40.191330&z=14" target="_blank" rel="noopener noreferrer">ул. Серо Ханзадяна 94</a><br><em>Старый Норьк, Ереван</em>',
+      'visit.hours.h':'Время работы','visit.hours.p':'Вт – Вс<br><em>14:00 – 00:00</em>',
+      'visit.book.h':'Бронь',
+      'visit.book.p':'<a href="tel:+37444220044"><em>+374 44 22 00 44</em></a><br>Звонок или <a href="https://t.me/keghar1881?direct" target="_blank" rel="noopener noreferrer">Telegram</a>',
+      'footer.tag':'Ресторан и винодельня · с 1877',
+      'footer.copy':'© 1877 – 2026  ·  Ресторан Keghar  ·  Ереван, Армения'
+    },
+
+    hy: {
+      'nav.about':'Պատմություն', 'nav.menu':'Մենյու', 'nav.cellar':'Մառան',
+      'nav.app':'Հավելված', 'nav.contacts':'Կապ', 'nav.book':'Ամրագրել',
+      'hero.loc':'Երևան · Հին Նորք',
+      'hero.sub':'Ընտանեկան ռեստորան՝ հայկական խոհանոցով և տնական գինով',
+      'hero.book':'Ամրագրել սեղան', 'hero.menu':'Դիտել մենյուն',
+      'about.eyebrow':'Մեր պատմությունը',
+      'about.title':'Հարյուր հիսուն տարվա <em>ավանդույթ</em>՝ ձեռքից ձեռք փոխանցված',
+      'about.p1':'Հին Նորքի թաղամասում, թթենիների ու քարե բակերի մեջ, ընտանիքը 1877 թվականից գինի է պատրաստում։ Յուրաքանչյուր սերունդ խնամքով կրում է իր նախնիների արհեստը, և այսօր մենք բացում ենք այս պատերը հյուրերի առջև։',
+      'about.fact1':'Տարվա արհեստ','about.fact2':'Սերունդ','about.fact3':'Գինու տեսակ',
+      'menu.eyebrow':'Գաստրոնոմիա',
+      'menu.title':'Հայկական <em>սեղան</em>',
+      'menu.p':'Բաղադրատոմսեր՝ ժամանակով փորձված։ Պատրաստում ենք փայտի վառարանում, թոնրում և կենդանի կրակի վրա՝ ինչպես անում էին մեր պապերը։',
+      'menu.tab.starters':'Նախուտեստ','menu.tab.salads':'Աղցան','menu.tab.soups':'Ապուր',
+      'menu.tab.hot':'Տաք ուտեստ','menu.tab.kh':'Խորոված','menu.tab.ps':'Սեթեր և պաստա',
+      'menu.tab.ss':'Խավարտ և սոուս','menu.tab.de':'Աղանդեր',
+      'menu.kh.note':'Չափաբաժին՝ 350 գ','menu.service':'+10% սպասարկում',
+      'm.st1.n':'Բրուսկետտա միքս',
+      'm.st2.n':'Հայկական պանիրի տեսականի',
+      'm.st3.n':'Եվրոպական պանիրի տեսականի',
+      'm.st4.n':'Հայկական մսի տեսականի','m.st4.d':'Խոզապուխտ, երշիկ, բաստուրմա, սուջուխ',
+      'm.st5.n':'Քամած մածուն','m.st6.n':'Ռեժան','m.st7.n':'Խառը կանաչի',
+      'm.st8.n':'Կծու պղպեղ','m.st9.n':'Լիմոն',
+      'm.st10.n':'Թթվի տեսականի','m.st11.n':'Ձիթապտղի տեսականի','m.st12.n':'Հացի զամբյուղ',
+      'm.sa1.n':'Ամառային աղցան','m.sa1.d':'Լոլիկ, վարունգ, պղպեղ',
+      'm.sa2.n':'Բուրատա աղցան','m.sa3.n':'Ավելուկով աղցան',
+      'm.sa4.n':'Թայլանդական աղցան','m.sa4.d':'Սմբուկ, դդմիկ, բուլղարական պղպեղ, սունկ, հորթի փափկամիս',
+      'm.sa5.n':'Հունական աղցան','m.sa6.n':'Կեսար աղցան հավով',
+      'm.sa7.n':'Հավով թարխունով աղցան','m.sa7.d':'Հազար, թարխուն, հավի կրծքամիս',
+      'm.sa8.n':'Աղցան հորթի մսով','m.sa8.d':'Սմբուկ, հորթի փափկամիս',
+      'm.sa9.n':'Բանջարեղենային աղցան','m.sa9.d':'Ռուկկոլա, պղպեղ, վարունգ, լոլիկ, ավոկադո',
+      'm.sa10.n':'Ռոդոս աղցան','m.sa10.d':'Ռուկկոլա, պղպեղ, ֆետա պանիր, հորթի փափկամիս',
+      'm.sa11.n':'Կեսար աղցան ծովախեցգետիններով','m.sa11.d':'Ծովախեցգետին, սալաթի տերև',
+      'm.sa12.n':'Le Rous սմբուկով աղցան',
+      'm.sa13.n':'Իտալական աղցան','m.sa13.d':'Չերի լոլիկ, մոցարելլա պանիր, պեստո սոուս',
+      'm.sa14.n':'Սաղմոնով և ավոկադոյով աղցան','m.sa14.d':'Ռուկկոլա, սաղմոն, լոլիկ, ավոկադո',
+      'm.so1.n':'Սպաս','m.so2.n':'Հավով ապուր','m.so3.n':'Լոլիկով կրեմ ապուր',
+      'm.so4.n':'Սնկով կրեմ ապուր','m.so5.n':'Հորթի մսով կծու ապուր',
+      'm.ho1.n':'Կեղար','m.ho1.d':'Հորթի փափկամիս, սմբուկ, բրինձ, գինով սոուս',
+      'm.ho2.n':'Հարիսա','m.ho2.d':'Հավ, ցորեն',
+      'm.ho3.n':'Տոլմա','m.ho3.d':'Տավարի միս, խաղողի տերև',
+      'm.ho4.n':'Խուրջին','m.ho4.d':'Գառան միս, պղպեղ, լոլիկ',
+      'm.ho5.n':'Խուրջին հավի կրծքամսով','m.ho6.n':'Հավի տապակած թևիկներ',
+      'm.ho7.n':'Տժվժիկ','m.ho7.d':'Հորթի փորոտիք, բրինձ',
+      'm.ho8.n':'Խաշլամա','m.ho8.d':'Հորթի միս, կարտոֆիլ, բանջարեղեն',
+      'm.ho9.n':'Իշխան ֆիրմային սոուսով',
+      'm.ho10.n':'Գառան մսա հաճարով',
+      'm.ho11.n':'Հորթի մեդալյոն','m.ho11.d':'Հորթի փափկամիս, սունկ',
+      'm.ho12.n':'Ռիբս ֆիրմային','m.ho12.d':'Խոզի կողոսկր, խնձոր, պղպեղ, սունկ',
+      'm.ho13.n':'Լոլիկով ձվածեղ',
+      'm.kh1.n':'Կարտոֆիլ խորոված (պել)','m.kh2.n':'Խորոված բանջարեղեն',
+      'm.kh3.n':'Հավի թևիկներ','m.kh4.n':'Հավի կրծքամիս',
+      'm.kh5.n':'Ճուտ խորոված','m.kh6.n':'Խոզի փափուկ խորոված',
+      'm.kh7.n':'Հորթի խորոված','m.kh8.n':'Գառան խորոված',
+      'm.kh9.n':'Խոզի չալաղաջ խորոված','m.kh10.n':'Խոզի մսա խորոված',
+      'm.kh11.n':'Խորոված իշխան ձուկ','m.kh12.n':'Խորոված թառափ','m.kh13.n':'Խորովածի միքս',
+      'm.ps1.n':'6 անձի համար','m.ps1.d':'Խոզի չալաղաջ (800գր), խոզի մսա (800գր), խոզի փափուկ միս (800գր), պել (1 բաժին)',
+      'm.ps2.n':'4 անձի համար','m.ps2.d':'Խոզի չալաղաջ (400գր), խոզի մսա (400գր), խոզի փափուկ միս (400գր), պել (1 բաժին)',
+      'm.ps3.n':'Պաստա Ալֆրեդո','m.ps3.d':'Պաստա պեննե, սունկ, հավի կրծքամիս',
+      'm.ps4.n':'Պաստա պանիրով','m.ps4.d':'Պաստա պեննե, պանիր',
+      'm.ps5.n':'Պաստա ծովախեցգետինով','m.ps5.d':'Պաստա պեննե, ծովախեցգետին',
+      'm.ss1.n':'Ռիզոտտո','m.ss2.n':'Սև բրնձով փլավ','m.ss3.n':'Հաճարով փլավ',
+      'm.ss4.n':'Գրիլ բանջարեղեն','m.ss5.n':'Գյուղական կարտոֆիլ',
+      'm.ss6.n':'Արենի գինով սոուս','m.ss7.n':'Ոսկեհատ գինով սոուս',
+      'm.ss8.n':'Պանրային սոուս','m.ss9.n':'Կեսարի սոուս',
+      'm.ss10.n':'Խորովածի կարմիր սոուս','m.ss11.n':'Սնկով սոուս','m.ss12.n':'Պեստո սոուս',
+      'm.de1.n':'Բրաունի','m.de2.n':'Շտրուդել','m.de3.n':'Նարնջով բիսկվիտ',
+      'm.de4.n':'Գաթա','m.de5.n':'Փախլավա','m.de6.n':'Մուրաբա',
+      'm.de7.n':'Անիտ դեսերտ պաղպաղակ','m.de8.n':'Ձմերուկ','m.de9.n':'Սեխ',
+      'm.de10.n':'Մրգի տեսականի','m.de11.n':'Պաղպաղակ',
+      'menu.tab.dr':'Ըմպելիքներ','menu.tab.bar':'Բար',
+      'menu.sub.soft':'Զովացուցիչ ըմպելիքներ','menu.sub.fresh':'Ֆրեշ և սմուզի',
+      'menu.sub.coffee':'Սուրճ','menu.sub.tea':'Թեյ','menu.sub.lem':'Լիմոնադ (0,3 լ / 1 լ)',
+      'menu.sub.nac':'Ոչ ալկոհոլային կոկտեյլներ','menu.sub.ac':'Ալկոհոլային կոկտեյլներ',
+      'menu.sub.beer':'Գարեջուր','menu.sub.vodka':'Օղի (50 մլ / շիշ)',
+      'menu.sub.cognac':'Կոնյակ','menu.sub.whiskey':'Վիսկի',
+      'menu.sub.aperitif':'Ապերիտիվ','menu.sub.liqueur':'Լիկյոր',
+      'm.dr1.n':'Ջուր','m.dr2.n':'Հանքային ջուր','m.dr3.n':'Կոլա, Ֆանտա, Սպրայթ',
+      'm.dr4.n':'Բնական հյութ','m.dr5.n':'Տոնիկ','m.dr6.n':'Red Bull',
+      'm.dr7.n':'Թութենգ','m.dr8.n':'Նարինջ','m.dr9.n':'Խնձոր','m.dr10.n':'Գազար',
+      'm.dr11.n':'Բանան','m.dr12.n':'Ելակ','m.dr13.n':'Նուռ',
+      'm.dr14.n':'Արևելյան','m.dr15.n':'Փարիզյան','m.dr16.n':'Էսպրեսո',
+      'm.dr17.n':'Էսպրեսո Լունգո','m.dr18.n':'Էսպրեսո Մակիատո','m.dr19.n':'Ամերիկանո',
+      'm.dr20.n':'Կապուչինո','m.dr21.n':'Կապուչինո Արոմա','m.dr22.n':'Լատտե',
+      'm.dr23.n':'Լատտե Արոմա','m.dr24.n':'Գլյասե','m.dr25.n':'Նորքի Կեղար',
+      'm.dr26.n':'Այրիշ սուրճ','m.dr27.n':'Ֆրանսիական սուրճ','m.dr28.n':'Ռաֆ սուրճ',
+      'm.dr29.n':'Սև Ասսամ','m.dr30.n':'Էրլ Գրեյ','m.dr31.n':'Կանաչ Սենչա',
+      'm.dr32.n':'Հասմիկ','m.dr33.n':'Մրգային','m.dr34.n':'Ցիտրուսային',
+      'm.dr35.n':'Չիչխան','m.dr36.n':'Ազնվամորի','m.dr37.n':'Իմբիր',
+      'm.dr38.n':'Հայկական փունջ',
+      'm.dr39.n':'Նորքի Կեղար','m.dr40.n':'Մանգո ֆեշնֆրուտ','m.dr41.n':'Հատապտղային',
+      'm.dr42.n':'Ցիտրուսային','m.dr43.n':'Իմբիր, թուրինջ',
+      'm.dr44.n':'Նորքի Կեղար','m.dr45.n':'Մոհիտո','m.dr46.n':'Պինա Կոլադա',
+      'm.dr47.n':'Վանիլային շոկոլադ','m.dr48.n':'Մրգային',
+      'm.bar1.n':'Նորքի Կեղար','m.bar2.n':'Մոհիտո','m.bar3.n':'Մարգարիտա Կլասիկ',
+      'm.bar4.n':'Պինյա Կոլադա','m.bar5.n':'Կոսմոպոլիտեն','m.bar6.n':'Դայկիրի',
+      'm.bar7.n':'Կուբա Լիբրե','m.bar8.n':'Էլեկտրիկ Մարգարիտա','m.bar9.n':'Նեգրոնի',
+      'm.bar10.n':'Ջին տոնիկ','m.bar11.n':'Տեկիլա Սանրայզ','m.bar12.n':'Էսպրեսո Մարտինի',
+      'm.bar13.n':'Ապերոլ Սպրից','m.bar14.n':'Վիսկի Սաուեր','m.bar15.n':'Լոնգ Այլընդ Այս Թի',
+      'm.bar16.n':'Կիլիկիա','m.bar17.n':'Բավարիական էլ','m.bar18.n':'Բավարիական ստաուտ',
+      'm.bar19.n':'Կասպիան վայցեն',
+      'm.bar20.n':'Grey Goose','m.bar21.n':'Absolut','m.bar22.n':'Օնեգին','m.bar23.n':'Zeppelin',
+      'm.bar24.n':'Արարատ 5','m.bar25.n':'Ալի','m.bar26.n':'Ախթամար',
+      'm.bar27.n':'Վասպուրական','m.bar28.n':'Նաիրի',
+      'm.bar29.n':'Ballantine\u2019s','m.bar30.n':'Jameson','m.bar31.n':'Jack Daniel\u2019s',
+      'm.bar32.n':'Chivas 12','m.bar33.n':'Chivas 18',
+      'm.bar34.n':'Glenfiddich 12','m.bar35.n':'Glenfiddich 15',
+      'm.bar36.n':'Glenlivet 12','m.bar37.n':'Glenlivet 15',
+      'm.bar38.n':'Martini Bianco','m.bar39.n':'Martini Extra Dry',
+      'm.bar40.n':'Martini Rosso','m.bar41.n':'Martini Rosato','m.bar42.n':'Campari',
+      'm.bar43.n':'Jägermeister','m.bar44.n':'Aperol','m.bar45.n':'Baileys',
+      'm.bar46.n':'Sambuca','m.bar47.n':'Աբսենթ',
+      'menu.tab.wine':'Մեր գինիները',
+      'menu.wine.intro':'Մեր <em>150-ամյա Նորքի մառանից</em>',
+      'menu.wine.note':'Գինը՝ 150 մլ / 750 մլ',
+      'm.wn1.n':'1 · Արենի — կարմիր չոր',
+      'm.wn1.d':'Կարմիր հատապտուղների բույր, բարդ ու ներդաշնակ համ։ Մսային նախուտեստների և խորովածի հետ։ Սորտ՝ «Արենի» · 4 ամսվա հնեցում տակառում',
+      'm.wn2.n':'2 · Ոսկեհատ — սպիտակ չոր',
+      'm.wn2.d':'Համայն մրգային բույր, ներդաշնակ համ, վառ ձղոտագույն երանգ։ Թեթև սառը նախուտեստների, ձկան և հասուն պանիրների հետ։ Սորտ՝ «Ոսկեհատ» · 1,5 ամսվա հնեցում',
+      'm.wn3.n':'3 · Արենի Կարասի — կարմիր չոր',
+      'm.wn3.d':'Խիտ, լավ կառուցվածքավորված համ՝ հասուն հատապտուղների վառ բույրով, սուտակ-կարմիր երանգով։ Մսային ու ապխտած նախուտեստների, սոուսավոր մսային ուտեստների հետ։ Սորտ՝ «Արենի» · 12 ամսվա հնեցում կարասում',
+      'm.wn4.n':'4 · Կանգուն — սպիտակ չոր',
+      'm.wn4.d':'Դեղին մրգերի, սպիտակ կտովու և ծիրանի նրբերանգներ՝ հասած դեղձի շեշտադրմամբ, բաց ձղոտագույն երանգ։ Շոգեխաշած ձկան, ձովամթերքի, աղցանների ու գրիլի հետ։ Սորտ՝ «Կանգուն» (Արմավիր) · 4 ամսվա հնեցում',
+      'm.wn5.n':'5 · Արենի Վարդագույն — չոր վարդագույն',
+      'm.wn5.d':'Ձորենու, ելակի և մորու նուրբ նրբերանգներ, վառ վարդագույն երանգ։ Շոգեխաշած ձկան, ձովամթերքի, թեթև նախուտեստների ու բանջարեղենային գրիլի հետ։ Սորտ՝ «Արենի» · 1,5 ամսվա հնեցում',
+      'm.wn6.n':'6 · Կարմրահյութ — կարմիր չոր',
+      'm.wn6.d':'Բարդ ու նուրբ համ՝ ձորենու և մորու երանգներով, մթնի, սև հաղարջի, սալորի, նռան և համեմունքների բույրով։ Ձովամթերքի, թեթև սառը նախուտեստների և գրիլի հետ։ Սորտ՝ «Կարմրահյութ» (Արմավիր) · 4 ամսվա հնեցում',
+      'm.wn7.n':'7 · Արարատ — սպիտակ չոր · սահմանափակ թողարկում «70 շիշ»',
+      'm.wn7.d':'Թեթև ու բարդ համ՝ անսպասելի հանքային ետնահամով և հաճելի դառնությամբ, ոսկե-ձղոտագույն երանգ։ Մարգագետնային խոտերի արտահայտված բույր։ Ձովամթերքի, սառը նախուտեստների, շոգեխաշած կամ խորոված ձկան և խորովածի հետ',
+
+
+      'cellar.mark':'Մառան', 'cellar.eyebrow':'Մեր գինու մառանը',
+      'cellar.title':'«Մեր <em>գինու մառանի</em> քարե կամարներն ավելի հին են, քան ընտանեկան որևէ լուսանկար»',
+      'cellar.p':'Իջեք քարե սանդուղքով հնագույն մառան, որտեղ կարասներում հասունանում է գինին, իսկ տուֆի և խաղողի վազի բույրը պատմությունն ավելի արագ է հաղորդում, քան որևէ ուղեկցորդ։',
+      'app.eyebrow':'Keghar-ը iPhone-ի համար',
+      'app.title':'Սեղանի ամրագրում, մենյու և համտեսներ՝ <em>մեկ հպումով</em>',
+      'app.p':'Պահպանեք ձեր սիրած ուտեստները, պատվիրեք տանելի, ամրագրեք առանձին սրահ մառանում և առաջինը ստացեք հրավերներ գինու երեկոներին։',
+      'app.feat1':'Սեղանի ամրագրում','app.feat2':'Գինիների ցանկ','app.feat3':'Մառանի իրադարձություններ',
+      'app.phone.title':'Երեկո մառանում','app.phone.sub':'ՈՒՐ · 19:00 · 4 ՀՈԳԻ',
+      'app.phone.item':'Տոլմա','app.phone.item2':'Խաշլամա','app.phone.cta':'Ամրագրել',
+      'visit.eyebrow':'Հյուրերին','visit.title':'Գտնել <em>մեզ</em>',
+      'visit.p':'Հին Նորք, քաղաքի կենտրոնից վեր ընկած հանգիստ փողոցներ։ Բարձրացեք մեզ մոտ՝ և ժամանակը կդանդաղի։',
+      'visit.addr.h':'Հասցե',
+      'visit.addr.p':'<a href="https://yandex.ru/maps/org/keghar/242512484480/?ll=44.537443%2C40.191330&z=14" target="_blank" rel="noopener noreferrer">Սերո Խանզադյան փող. 94</a><br><em>Հին Նորք, Երևան</em>',
+      'visit.hours.h':'Աշխատանքի ժամեր','visit.hours.p':'Երք – Կիր<br><em>14:00 – 00:00</em>',
+      'visit.book.h':'Ամրագրում',
+      'visit.book.p':'<a href="tel:+37444220044"><em>+374 44 22 00 44</em></a><br>Զանգ կամ <a href="https://t.me/keghar1881?direct" target="_blank" rel="noopener noreferrer">Telegram</a>',
+      'footer.tag':'Ռեստորան և գինեգործարան · 1877-ից',
+      'footer.copy':'© 1877 – 2026  ·  Keghar ռեստորան  ·  Երևան, Հայաստան'
+    },
+
+    en: {
+      'nav.about':'Story', 'nav.menu':'Menu', 'nav.cellar':'Cellar',
+      'nav.app':'App', 'nav.contacts':'Contact', 'nav.book':'Reserve',
+      'hero.loc':'Yerevan · Old Nork',
+      'hero.sub':'A family restaurant of Armenian cuisine and homemade wine',
+      'hero.book':'Reserve a table', 'hero.menu':'View menu',
+      'about.eyebrow':'Our story',
+      'about.title':'One hundred and fifty years of <em>tradition</em>, passed from hand to hand',
+      'about.p1':'In the old Nork quarter, among mulberry trees and stone courtyards, the family has been making wine since 1877. Each generation faithfully carries the craft of their ancestors — and today we open these walls to our guests.',
+      'about.fact1':'Years of craft','about.fact2':'Generations','about.fact3':'Wine varieties',
+      'menu.eyebrow':'Gastronomy',
+      'menu.title':'The Armenian <em>table</em>',
+      'menu.p':'Recipes proven by time. We cook in a wood-fired oven, in the tonir, and over an open flame — just as our grandfathers did.',
+      'menu.tab.starters':'Appetizers','menu.tab.salads':'Salads','menu.tab.soups':'Soups',
+      'menu.tab.hot':'Hot dishes','menu.tab.kh':'Barbecue','menu.tab.ps':'Sets & pasta',
+      'menu.tab.ss':'Sides & sauces','menu.tab.de':'Desserts',
+      'menu.kh.note':'Portion 350 g','menu.service':'+10% service charge',
+      'm.st1.n':'Bruschetta Mix',
+      'm.st2.n':'Armenian Cheese Assortment',
+      'm.st3.n':'European Cheese Assortment',
+      'm.st4.n':'Armenian Meat Assortment','m.st4.d':'Fillet, sausage, basturma, sujukh',
+      'm.st5.n':'Strained Yogurt','m.st6.n':'Rezhan','m.st7.n':'Greens',
+      'm.st8.n':'Hot Pepper','m.st9.n':'Lemon',
+      'm.st10.n':'Pickles Assortment','m.st11.n':'Assorted Olives','m.st12.n':'Bread Basket',
+      'm.sa1.n':'Summer Salad','m.sa1.d':'Tomatoes, cucumbers, peppers',
+      'm.sa2.n':'Burrata Salad','m.sa3.n':'Aveluk Salad',
+      'm.sa4.n':'Thai Salad','m.sa4.d':'Eggplant, zucchini, bell pepper, mushrooms, veal',
+      'm.sa5.n':'Greek Salad','m.sa6.n':'Caesar',
+      'm.sa7.n':'Chicken Tarragon Salad','m.sa7.d':'Lettuce, tarragon, chicken breast',
+      'm.sa8.n':'Veal Salad','m.sa8.d':'Eggplant, veal',
+      'm.sa9.n':'Vegetable Salad','m.sa9.d':'Arugula, pepper, cucumber, tomato, avocado',
+      'm.sa10.n':'Rodos','m.sa10.d':'Arugula, pepper, feta cheese, veal',
+      'm.sa11.n':'Caesar with Shrimp','m.sa11.d':'Shrimp, lettuce leaves',
+      'm.sa12.n':'Le Rous with Eggplant',
+      'm.sa13.n':'Italian Salad','m.sa13.d':'Cherry tomatoes, mozzarella, pesto sauce',
+      'm.sa14.n':'Salmon with Avocado','m.sa14.d':'Arugula, salmon, tomato, avocado',
+      'm.so1.n':'Spas','m.so2.n':'Chicken Soup','m.so3.n':'Tomato Cream Soup',
+      'm.so4.n':'Mushroom Cream Soup','m.so5.n':'Spicy Veal Soup',
+      'm.ho1.n':'Keghar','m.ho1.d':'Veal, eggplant, rice, wine sauce',
+      'm.ho2.n':'Harisa','m.ho2.d':'Chicken, wheat',
+      'm.ho3.n':'Dolma','m.ho3.d':'Beef, grape leaves',
+      'm.ho4.n':'Khurjin','m.ho4.d':'Lamb, pepper, tomato',
+      'm.ho5.n':'Khurjin with Chicken Breast','m.ho6.n':'Chicken Wings',
+      'm.ho7.n':'Tzhvzhik','m.ho7.d':'Veal offal, rice',
+      'm.ho8.n':'Khashlama','m.ho8.d':'Veal, potatoes, vegetables',
+      'm.ho9.n':'Trout with Signature Sauce',
+      'm.ho10.n':'Lamb Shoulder with Emmer Wheat Pilaf',
+      'm.ho11.n':'Veal Medallions','m.ho11.d':'Veal, mushrooms',
+      'm.ho12.n':'Signature Ribs','m.ho12.d':'Ribs, apple, pepper, mushrooms',
+      'm.ho13.n':'Fried Eggs with Tomatoes',
+      'm.kh1.n':'BBQ Potato','m.kh2.n':'BBQ Vegetables',
+      'm.kh3.n':'BBQ Chicken Wings','m.kh4.n':'BBQ Chicken Breast',
+      'm.kh5.n':'BBQ Chicken','m.kh6.n':'BBQ Pork Tenderloin',
+      'm.kh7.n':'BBQ Veal','m.kh8.n':'BBQ Lamb',
+      'm.kh9.n':'BBQ Pork Loin','m.kh10.n':'BBQ Pork Ribs',
+      'm.kh11.n':'BBQ Trout','m.kh12.n':'BBQ Sterlet','m.kh13.n':'BBQ Mix',
+      'm.ps1.n':'Set for 6 Persons','m.ps1.d':'Pork loin (800 g), pork ribs (800 g), pork tenderloin (800 g), BBQ potato (1 portion)',
+      'm.ps2.n':'Set for 4 Persons','m.ps2.d':'Pork loin (400 g), pork ribs (400 g), pork tenderloin (400 g), BBQ potato (1 portion)',
+      'm.ps3.n':'Pasta Alfredo','m.ps3.d':'Penne, mushrooms, chicken breast',
+      'm.ps4.n':'Pasta with Cheese','m.ps4.d':'Penne, cheese',
+      'm.ps5.n':'Pasta with Shrimp','m.ps5.d':'Penne, shrimp',
+      'm.ss1.n':'Risotto','m.ss2.n':'Black Rice Pilaf','m.ss3.n':'Emmer Wheat Pilaf',
+      'm.ss4.n':'Grilled Vegetables','m.ss5.n':'Potato Wedges',
+      'm.ss6.n':'Areni Wine Sauce','m.ss7.n':'Voskehat Wine Sauce',
+      'm.ss8.n':'Cheese Sauce','m.ss9.n':'Caesar Sauce',
+      'm.ss10.n':'Red BBQ Sauce','m.ss11.n':'Mushroom Sauce','m.ss12.n':'Pesto Sauce',
+      'm.de1.n':'Brownie','m.de2.n':'Strudel','m.de3.n':'Orange Sponge Cake',
+      'm.de4.n':'Gata','m.de5.n':'Pakhlava','m.de6.n':'Jam',
+      'm.de7.n':'Anit Ice Cream Dessert','m.de8.n':'Watermelon','m.de9.n':'Melon',
+      'm.de10.n':'Fruit Assortment','m.de11.n':'Ice Cream',
+      'menu.tab.dr':'Drinks','menu.tab.bar':'Bar',
+      'menu.sub.soft':'Soft drinks','menu.sub.fresh':'Fresh & smoothies',
+      'menu.sub.coffee':'Coffee','menu.sub.tea':'Tea','menu.sub.lem':'Lemonades (0.3 L / 1 L)',
+      'menu.sub.nac':'Non-alcoholic cocktails','menu.sub.ac':'Alcoholic cocktails',
+      'menu.sub.beer':'Beer','menu.sub.vodka':'Vodka (50 ml / bottle)',
+      'menu.sub.cognac':'Cognac','menu.sub.whiskey':'Whiskey',
+      'menu.sub.aperitif':'Aperitif','menu.sub.liqueur':'Liqueur',
+      'm.dr1.n':'Water','m.dr2.n':'Mineral water','m.dr3.n':'Cola, Fanta, Sprite',
+      'm.dr4.n':'Natural juice','m.dr5.n':'Tonic','m.dr6.n':'Red Bull',
+      'm.dr7.n':'Grapefruit','m.dr8.n':'Orange','m.dr9.n':'Apple','m.dr10.n':'Carrot',
+      'm.dr11.n':'Banana','m.dr12.n':'Strawberry','m.dr13.n':'Pomegranate',
+      'm.dr14.n':'Oriental','m.dr15.n':'Parisian','m.dr16.n':'Espresso',
+      'm.dr17.n':'Espresso Lungo','m.dr18.n':'Espresso Macchiato','m.dr19.n':'Americano',
+      'm.dr20.n':'Cappuccino','m.dr21.n':'Cappuccino Aroma','m.dr22.n':'Latte',
+      'm.dr23.n':'Latte Aroma','m.dr24.n':'Glacé','m.dr25.n':'Nork Keghar',
+      'm.dr26.n':'Irish coffee','m.dr27.n':'French coffee','m.dr28.n':'Raf coffee',
+      'm.dr29.n':'Black Assam','m.dr30.n':'Earl Grey','m.dr31.n':'Green Sencha',
+      'm.dr32.n':'Jasmine','m.dr33.n':'Fruit','m.dr34.n':'Citrus',
+      'm.dr35.n':'Sea buckthorn','m.dr36.n':'Raspberry','m.dr37.n':'Ginger',
+      'm.dr38.n':'Armenian bouquet',
+      'm.dr39.n':'Nork Keghar','m.dr40.n':'Mango passion fruit','m.dr41.n':'Berry',
+      'm.dr42.n':'Citrus','m.dr43.n':'Ginger & grapefruit',
+      'm.dr44.n':'Nork Keghar','m.dr45.n':'Mojito','m.dr46.n':'Piña Colada',
+      'm.dr47.n':'Vanilla chocolate','m.dr48.n':'Fruit',
+      'm.bar1.n':'Nork Keghar','m.bar2.n':'Mojito','m.bar3.n':'Classic Margarita',
+      'm.bar4.n':'Piña Colada','m.bar5.n':'Cosmopolitan','m.bar6.n':'Daiquiri',
+      'm.bar7.n':'Cuba Libre','m.bar8.n':'Electric Margarita','m.bar9.n':'Negroni',
+      'm.bar10.n':'Gin & Tonic','m.bar11.n':'Tequila Sunrise','m.bar12.n':'Espresso Martini',
+      'm.bar13.n':'Aperol Spritz','m.bar14.n':'Whiskey Sour','m.bar15.n':'Long Island Iced Tea',
+      'm.bar16.n':'Kilikia','m.bar17.n':'Bavarian Ale','m.bar18.n':'Bavarian Stout',
+      'm.bar19.n':'Caspian Weizen',
+      'm.bar20.n':'Grey Goose','m.bar21.n':'Absolut','m.bar22.n':'Onegin','m.bar23.n':'Zeppelin',
+      'm.bar24.n':'Ararat 5','m.bar25.n':'Ani','m.bar26.n':'Akhtamar',
+      'm.bar27.n':'Vaspurakan','m.bar28.n':'Nairi',
+      'm.bar29.n':'Ballantine\u2019s','m.bar30.n':'Jameson','m.bar31.n':'Jack Daniel\u2019s',
+      'm.bar32.n':'Chivas 12','m.bar33.n':'Chivas 18',
+      'm.bar34.n':'Glenfiddich 12','m.bar35.n':'Glenfiddich 15',
+      'm.bar36.n':'Glenlivet 12','m.bar37.n':'Glenlivet 15',
+      'm.bar38.n':'Martini Bianco','m.bar39.n':'Martini Extra Dry',
+      'm.bar40.n':'Martini Rosso','m.bar41.n':'Martini Rosato','m.bar42.n':'Campari',
+      'm.bar43.n':'Jägermeister','m.bar44.n':'Aperol','m.bar45.n':'Baileys',
+      'm.bar46.n':'Sambuca','m.bar47.n':'Absinthe',
+      'menu.tab.wine':'Our wines',
+      'menu.wine.intro':'From our <em>150-year-old Nork marani</em>',
+      'menu.wine.note':'Price per 150 ml / 750 ml',
+      'm.wn1.n':'1 · Areni — Dry Red',
+      'm.wn1.d':'Aromas of red berries; rich, complex and harmonious. Pairs with meat starters and grilled meats. Areni grape · 4 months oak ageing',
+      'm.wn2.n':'2 · Voskehat — Dry White',
+      'm.wn2.d':'Layered fruit bouquet, harmonious palate, bright straw-gold colour. With light cold starters, fish and aged cheeses. Voskehat grape · 1.5 months ageing',
+      'm.wn3.n':'3 · Areni Karasi — Dry Red',
+      'm.wn3.d':'Dense, well-structured palate with vivid ripe-berry aromatics; ruby-red colour. With meat and smoked starters, sauced meat dishes. Areni grape · 12 months in karas (clay amphora)',
+      'm.wn4.n':'4 · Kangun — Dry White',
+      'm.wn4.d':'Yellow fruit, white quince and apricot notes with ripe peach accents; pale straw colour. With steamed fish, seafood, salads and grilled meats. Kangun grape (Armavir) · 4 months ageing',
+      'm.wn5.n':'5 · Areni Rosé — Dry Rosé',
+      'm.wn5.d':'Subtle wild strawberry, strawberry and raspberry notes; vibrant rose colour. With steamed fish, seafood, light starters and vegetable grills. Areni grape · 1.5 months ageing',
+      'm.wn6.n':'6 · Karmrahyut — Dry Red',
+      'm.wn6.d':'Layered, delicate palate with wild-strawberry and raspberry notes; aromas of sloe, blackcurrant, plum, pomegranate and spices. With seafood, light cold starters and grills. Karmrahyut grape (Armavir) · 4 months ageing',
+      'm.wn7.n':'7 · Ararat — Dry White · limited edition «70 bottles»',
+      'm.wn7.d':'Delicate, layered palate with mineral finish and gentle bitterness; golden-straw colour. Expressive meadow-herb bouquet. With seafood, cold starters, steamed or grilled fish, and khorovats',
+
+
+      'cellar.mark':'Cellar', 'cellar.eyebrow':'Our wine cellar',
+      'cellar.title':'"The stone vaults of our <em>wine cellar</em> are older than any family photograph"',
+      'cellar.p':'Walk down the stone staircase into the ancient cellar, where wine matures in karas jars and the scent of tuff and grapevine tells the story faster than any guide.',
+      'app.eyebrow':'Keghar for iPhone',
+      'app.title':'Table reservations, menu and tastings — <em>in a single tap</em>',
+      'app.p':'Save your favourite dishes, order takeaway, reserve a private hall in the cellar, and be the first to receive invitations to wine evenings.',
+      'app.feat1':'Table booking','app.feat2':'Wine list','app.feat3':'Cellar events',
+      'app.phone.title':'Evening in the cellar','app.phone.sub':'FRI · 19:00 · 4 GUESTS',
+      'app.phone.item':'Tolma','app.phone.item2':'Khashlama','app.phone.cta':'Reserve',
+      'visit.eyebrow':'For guests','visit.title':'Find <em>us</em>',
+      'visit.p':'Old Nork, quiet lanes above the city centre. Come up to us — and time will slow down.',
+      'visit.addr.h':'Address',
+      'visit.addr.p':'<a href="https://yandex.ru/maps/org/keghar/242512484480/?ll=44.537443%2C40.191330&z=14" target="_blank" rel="noopener noreferrer">94 Sero Khanzadyan St.</a><br><em>Old Nork, Yerevan</em>',
+      'visit.hours.h':'Hours','visit.hours.p':'Tue – Sun<br><em>14:00 – 00:00</em>',
+      'visit.book.h':'Reservation',
+      'visit.book.p':'<a href="tel:+37444220044"><em>+374 44 22 00 44</em></a><br>Call or <a href="https://t.me/keghar1881?direct" target="_blank" rel="noopener noreferrer">Telegram</a>',
+      'footer.tag':'Restaurant & winery · since 1877',
+      'footer.copy':'© 1877 – 2026  ·  Keghar Restaurant  ·  Yerevan, Armenia'
+    }
+  };
+
+  const SUPPORTED = ['ru','hy','en'];
+  function detectLang() {
+    try {
+      const saved = localStorage.getItem('keghar_lang');
+      if (saved && SUPPORTED.includes(saved)) return saved;
+    } catch(_) {}
+    const langs = (navigator.languages && navigator.languages.length) ? navigator.languages : [navigator.language || 'ru'];
+    for (const raw of langs) {
+      const code = (raw || '').toLowerCase().split('-')[0];
+      if (code === 'hy') return 'hy';
+      if (code === 'en') return 'en';
+      if (code === 'ru' || code === 'uk' || code === 'be' || code === 'kk') return 'ru';
+    }
+    return 'ru';
+  }
+
+  function applyLang(lang) {
+    if (!SUPPORTED.includes(lang)) lang = 'ru';
+    const dict = I18N[lang];
+    document.documentElement.setAttribute('lang', lang);
+
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      const value = dict[key];
+      if (value != null) el.textContent = value;
+    });
+    document.querySelectorAll('[data-i18n-html]').forEach(el => {
+      const key = el.getAttribute('data-i18n-html');
+      const value = dict[key];
+      if (value != null) el.innerHTML = value;
+    });
+
+    document.querySelectorAll('.lang-switcher button').forEach(b => {
+      b.classList.toggle('active', b.dataset.lang === lang);
+    });
+
+    try { localStorage.setItem('keghar_lang', lang); } catch(_) {}
+  }
+
+  applyLang(detectLang());
+  document.querySelectorAll('.lang-switcher button').forEach(btn => {
+    btn.addEventListener('click', () => applyLang(btn.dataset.lang));
+  });
+
+  /* ──────────────  NAV & UI  ────────────── */
+  const nav = document.getElementById('nav');
+  const setScrolled = () => nav.classList.toggle('scrolled', window.scrollY > 30);
+  window.addEventListener('scroll', setScrolled, { passive: true });
+  setScrolled();
+
+  const burger = document.getElementById('burger');
+  const navMobile = document.getElementById('navMobile');
+  burger.addEventListener('click', () => {
+    burger.classList.toggle('open');
+    navMobile.classList.toggle('open');
+    document.body.style.overflow = navMobile.classList.contains('open') ? 'hidden' : '';
+  });
+  navMobile.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    burger.classList.remove('open');
+    navMobile.classList.remove('open');
+    document.body.style.overflow = '';
+  }));
+
+  const tabs = document.querySelectorAll('.menu-tab');
+  const panels = document.querySelectorAll('.menu-panel');
+  tabs.forEach(tab => tab.addEventListener('click', () => {
+    const key = tab.dataset.tab;
+    tabs.forEach(t => t.classList.toggle('active', t === tab));
+    panels.forEach(p => p.classList.toggle('active', p.dataset.panel === key));
+  }));
+</script>
+
+</body>
+</html>
