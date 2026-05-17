@@ -614,209 +614,6 @@
     text-shadow: 0 2px 18px rgba(0, 0, 0, 0.35);
   }
 
-  /* ─────────────  APP BANNER  ───────────── */
-  .app {
-    background: var(--bg-mist);
-    color: var(--ink);
-    padding: clamp(70px, 10vw, 120px) 0;
-  }
-  .app-card {
-    background:
-      linear-gradient(135deg, var(--bg-warm) 0%, var(--bg-stone) 100%);
-    border: 1px solid var(--line);
-    border-radius: 4px;
-    padding: clamp(40px, 6vw, 80px);
-    display: grid;
-    grid-template-columns: 1.3fr 1fr;
-    gap: clamp(40px, 6vw, 80px);
-    align-items: center;
-    position: relative;
-    overflow: hidden;
-    box-shadow: 0 30px 80px -25px rgba(46, 42, 36, 0.18);
-  }
-  .app-card::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image:
-      url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='400'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.35  0 0 0 0 0.28  0 0 0 0 0.18  0 0 0 0.15 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
-    mix-blend-mode: multiply;
-    pointer-events: none;
-  }
-  .app-info { position: relative; color: var(--ink); }
-  .app-info .eyebrow { color: var(--wine); margin-bottom: 18px; display: block; }
-  .app-info h2 {
-    font-family: var(--serif);
-    font-size: clamp(32px, 4.5vw, 52px);
-    line-height: 1.1;
-    font-weight: 400;
-    margin-bottom: 20px;
-  }
-  .app-info h2 em { font-style: italic; color: var(--wine); }
-  .app-info p {
-    color: var(--ink-soft);
-    font-size: 15px;
-    line-height: 1.75;
-    margin-bottom: 32px;
-    max-width: 460px;
-  }
-  .app-store {
-    display: inline-flex;
-    align-items: center;
-    gap: 14px;
-    background: var(--ink);
-    color: var(--bg-mist);
-    padding: 14px 26px 14px 22px;
-    border-radius: 10px;
-    transition: transform .25s, box-shadow .25s;
-    box-shadow: 0 8px 24px -8px rgba(46, 42, 36, 0.3);
-  }
-  .app-store:hover { transform: translateY(-2px); opacity: 1; box-shadow: 0 14px 36px -10px rgba(46, 42, 36, 0.4); }
-  .app-store svg { width: 30px; height: 30px; flex-shrink: 0; }
-  .app-store-text { line-height: 1.1; text-align: left; }
-  .app-store-text small {
-    display: block;
-    font-size: 11px;
-    letter-spacing: 0.04em;
-    color: rgba(245, 240, 229, 0.78);
-  }
-  .app-store-text strong {
-    display: block;
-    font-size: 19px;
-    font-weight: 500;
-    margin-top: 2px;
-    letter-spacing: -0.01em;
-  }
-  .app-feats {
-    display: flex;
-    gap: 24px;
-    margin-top: 28px;
-    flex-wrap: wrap;
-  }
-  .app-feats li {
-    list-style: none;
-    font-size: 12px;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--wine);
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  .app-feats li::before {
-    content: '';
-    width: 5px;
-    height: 5px;
-    background: var(--gold);
-    border-radius: 50%;
-  }
-
-  /* phone mockup — light theme */
-  .app-phone {
-    position: relative;
-    justify-self: center;
-    width: 100%;
-    max-width: 280px;
-    aspect-ratio: 9/19;
-  }
-  .phone-frame {
-    position: absolute;
-    inset: 0;
-    background: #2A2723;
-    border-radius: 38px;
-    padding: 10px;
-    box-shadow:
-      0 0 0 2px #4A453E,
-      0 30px 60px -10px rgba(46, 42, 36, 0.35),
-      inset 0 0 0 1px rgba(255,255,255,0.05);
-  }
-  .phone-screen {
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(180deg, var(--bg-mist) 0%, var(--bg-soft) 100%);
-    border-radius: 30px;
-    overflow: hidden;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    padding: 36px 18px 18px;
-  }
-  .phone-notch {
-    position: absolute;
-    top: 12px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 80px;
-    height: 22px;
-    background: #2A2723;
-    border-radius: 14px;
-  }
-  .phone-brand {
-    text-align: center;
-    font-family: var(--serif);
-    font-size: 18px;
-    letter-spacing: 0.22em;
-    color: var(--ink);
-    margin-bottom: 4px;
-  }
-  .phone-brand small {
-    display: block;
-    font-family: var(--sans);
-    font-size: 7px;
-    letter-spacing: 0.4em;
-    color: var(--wine);
-    margin-top: 2px;
-  }
-  .phone-card {
-    margin-top: 16px;
-    background: rgba(255, 255, 255, 0.6);
-    border: 1px solid var(--line);
-    border-radius: 8px;
-    padding: 14px;
-    backdrop-filter: blur(10px);
-  }
-  .phone-card-title {
-    font-family: var(--serif);
-    font-size: 13px;
-    color: var(--ink);
-    margin-bottom: 6px;
-  }
-  .phone-card-sub {
-    font-size: 9px;
-    color: var(--stone);
-    letter-spacing: 0.1em;
-  }
-  .phone-cta {
-    margin-top: auto;
-    background: var(--wine);
-    color: var(--bg-mist);
-    text-align: center;
-    padding: 11px;
-    border-radius: 6px;
-    font-size: 10px;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    font-weight: 500;
-  }
-  .phone-list {
-    margin-top: 12px;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
-  .phone-list-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 9px 11px;
-    background: rgba(255, 255, 255, 0.45);
-    border: 1px solid var(--line-soft);
-    border-radius: 5px;
-    font-size: 10px;
-    color: var(--ink);
-  }
-  .phone-list-item span:last-child { color: var(--wine); font-family: var(--serif); font-style: italic; font-size: 11px; }
-
   /* ─────────────  VISIT  ───────────── */
   .visit {
     background: var(--bg-soft);
@@ -979,11 +776,6 @@
 
     .menu-grid { grid-template-columns: 1fr; gap: 0; }
 
-    .app-card { grid-template-columns: 1fr; text-align: center; }
-    .app-info p { margin-left: auto; margin-right: auto; }
-    .app-feats { justify-content: center; }
-    .app-phone { max-width: 240px; }
-
     .cellar { background-position: center 38%; }
 
     .visit-grid { grid-template-columns: 1fr; }
@@ -1010,7 +802,6 @@
   html[lang="hy"] .section-head h2   { font-size: clamp(34px, 5.4vw, 60px); }
   html[lang="hy"] .about-text h3     { font-size: clamp(27px, 3.7vw, 44px); }
   html[lang="hy"] .cellar h2         { font-size: clamp(34px, 5vw, 58px); }
-  html[lang="hy"] .app-info h2       { font-size: clamp(27px, 3.7vw, 44px); }
   html[lang="hy"] .menu-item .name   { font-size: 19px; }
   html[lang="hy"] .menu-item .price  { font-size: 18px; }
   html[lang="hy"] .menu-item .desc   { font-size: 12px; }
@@ -1064,7 +855,6 @@
     <li><a href="#about" data-i18n="nav.about">История</a></li>
     <li><a href="#menu" data-i18n="nav.menu">Меню</a></li>
     <li><a href="#cellar" data-i18n="nav.cellar">Погреб</a></li>
-    <li><a href="#app" data-i18n="nav.app">Приложение</a></li>
     <li><a href="#visit" data-i18n="nav.contacts">Контакты</a></li>
   </ul>
   <div class="lang-switcher" role="group" aria-label="Язык">
@@ -1079,7 +869,6 @@
   <a href="#about" data-i18n="nav.about">История</a>
   <a href="#menu" data-i18n="nav.menu">Меню</a>
   <a href="#cellar" data-i18n="nav.cellar">Погреб</a>
-  <a href="#app" data-i18n="nav.app">Приложение</a>
   <a href="#visit" data-i18n="nav.contacts">Контакты</a>
   <div class="lang-switcher lang-switcher-mobile" role="group" aria-label="Язык">
     <button type="button" data-lang="hy" aria-label="Հայերեն">HY</button>
@@ -1494,54 +1283,6 @@
   </div>
 </section>
 
-<!-- APP BANNER -->
-<section class="app" id="app">
-  <div class="wrap">
-    <div class="app-card">
-      <div class="app-info">
-        <span class="eyebrow" data-i18n="app.eyebrow">Keghar для iPhone</span>
-        <h2 data-i18n-html="app.title">Бронь стола, меню и&nbsp;дегустации&nbsp;— <em>в&nbsp;одном касании</em></h2>
-        <p data-i18n="app.p">Сохраните любимые блюда, заказывайте навынос, бронируйте отдельный зал в&nbsp;погребе и&nbsp;получайте приглашения на&nbsp;винные вечера первыми.</p>
-
-        <a href="#" class="app-store" aria-label="Download on the App Store">
-          <svg viewBox="0 0 384 512" xmlns="http://www.w3.org/2000/svg" fill="currentColor" aria-hidden="true">
-            <path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/>
-          </svg>
-          <div class="app-store-text">
-            <small>Download on the</small>
-            <strong>App Store</strong>
-          </div>
-        </a>
-
-        <ul class="app-feats">
-          <li data-i18n="app.feat1">Бронь стола</li>
-          <li data-i18n="app.feat2">Карта вин</li>
-          <li data-i18n="app.feat3">События в погребе</li>
-        </ul>
-      </div>
-
-      <div class="app-phone" aria-hidden="true">
-        <div class="phone-frame">
-          <div class="phone-screen">
-            <div class="phone-notch"></div>
-            <div class="phone-brand">KEGHAR<small>EST. 1881</small></div>
-            <div class="phone-card">
-              <div class="phone-card-title" data-i18n="app.phone.title">Вечер в&nbsp;марани</div>
-              <div class="phone-card-sub" data-i18n="app.phone.sub">ПТ · 19:00 · 4 ПЕРСОНЫ</div>
-            </div>
-            <div class="phone-list">
-              <div class="phone-list-item"><span>Арени Reserve</span><span>7 200 ֏</span></div>
-              <div class="phone-list-item"><span data-i18n="app.phone.item">Толма</span><span>3 200 ֏</span></div>
-              <div class="phone-list-item"><span data-i18n="app.phone.item2">Хашлама</span><span>4 800 ֏</span></div>
-            </div>
-            <div class="phone-cta" style="margin-top:14px" data-i18n="app.phone.cta">Забронировать</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- VISIT -->
 <section class="visit" id="visit">
   <div class="wrap">
@@ -1604,7 +1345,7 @@
   const I18N = {
     ru: {
       'nav.about':'История', 'nav.menu':'Меню', 'nav.cellar':'Погреб',
-      'nav.app':'Приложение', 'nav.contacts':'Контакты', 'nav.book':'Забронировать',
+      'nav.contacts':'Контакты', 'nav.book':'Забронировать',
       'hero.loc':'Ереван · Старый Норк',
       'hero.sub':'Семейный ресторан армянской кухни и домашнего вина',
       'hero.book':'Забронировать стол', 'hero.menu':'Смотреть меню',
@@ -1736,12 +1477,6 @@
       'cellar.mark':'Погреб', 'cellar.eyebrow':'Наш винный погреб',
       'cellar.title':'«Каменные своды нашего <em>винного погреба</em> старше любой семейной фотографии»',
       'cellar.p':'Спуститесь по каменной лестнице в древний погреб, где в карасах созревает вино, а запах туфа и виноградной лозы рассказывает историю быстрее любого экскурсовода.',
-      'app.eyebrow':'Keghar для iPhone',
-      'app.title':'Бронь стола, меню и дегустации — <em>в одном касании</em>',
-      'app.p':'Сохраните любимые блюда, заказывайте навынос, бронируйте отдельный зал в погребе и получайте приглашения на винные вечера первыми.',
-      'app.feat1':'Бронь стола','app.feat2':'Карта вин','app.feat3':'События в погребе',
-      'app.phone.title':'Вечер в погребе','app.phone.sub':'ПТ · 19:00 · 4 ПЕРСОНЫ',
-      'app.phone.item':'Толма','app.phone.item2':'Хашлама','app.phone.cta':'Забронировать',
       'visit.eyebrow':'Гостям','visit.title':'Найти <em>нас</em>',
       'visit.p':'Старый Норк, тихие улочки выше центра. Поднимитесь к нам — и время замедлится.',
       'visit.addr.h':'Адрес',
@@ -1755,7 +1490,7 @@
 
     hy: {
       'nav.about':'Պատմություն', 'nav.menu':'Մենյու', 'nav.cellar':'Մառան',
-      'nav.app':'Հավելված', 'nav.contacts':'Կապ', 'nav.book':'Ամրագրել',
+      'nav.contacts':'Կապ', 'nav.book':'Ամրագրել',
       'hero.loc':'Երևան · Հին Նորք',
       'hero.sub':'Ընտանեկան ռեստորան՝ հայկական խոհանոցով և տնական գինով',
       'hero.book':'Ամրագրել սեղան', 'hero.menu':'Դիտել մենյուն',
@@ -1887,12 +1622,6 @@
       'cellar.mark':'Մառան', 'cellar.eyebrow':'Մեր գինու մառանը',
       'cellar.title':'«Մեր <em>գինու մառանի</em> քարե կամարներն ավելի հին են, քան ընտանեկան որևէ լուսանկար»',
       'cellar.p':'Իջեք քարե սանդուղքով հնագույն մառան, որտեղ կարասներում հասունանում է գինին, իսկ տուֆի և խաղողի վազի բույրը պատմությունն ավելի արագ է հաղորդում, քան որևէ ուղեկցորդ։',
-      'app.eyebrow':'Keghar-ը iPhone-ի համար',
-      'app.title':'Սեղանի ամրագրում, մենյու և համտեսներ՝ <em>մեկ հպումով</em>',
-      'app.p':'Պահպանեք ձեր սիրած ուտեստները, պատվիրեք տանելի, ամրագրեք առանձին սրահ մառանում և առաջինը ստացեք հրավերներ գինու երեկոներին։',
-      'app.feat1':'Սեղանի ամրագրում','app.feat2':'Գինիների ցանկ','app.feat3':'Մառանի իրադարձություններ',
-      'app.phone.title':'Երեկո մառանում','app.phone.sub':'ՈՒՐ · 19:00 · 4 ՀՈԳԻ',
-      'app.phone.item':'Տոլմա','app.phone.item2':'Խաշլամա','app.phone.cta':'Ամրագրել',
       'visit.eyebrow':'Հյուրերին','visit.title':'Գտնել <em>մեզ</em>',
       'visit.p':'Հին Նորք, քաղաքի կենտրոնից վեր ընկած հանգիստ փողոցներ։ Բարձրացեք մեզ մոտ՝ և ժամանակը կդանդաղի։',
       'visit.addr.h':'Հասցե',
@@ -1906,7 +1635,7 @@
 
     en: {
       'nav.about':'Story', 'nav.menu':'Menu', 'nav.cellar':'Cellar',
-      'nav.app':'App', 'nav.contacts':'Contact', 'nav.book':'Reserve',
+      'nav.contacts':'Contact', 'nav.book':'Reserve',
       'hero.loc':'Yerevan · Old Nork',
       'hero.sub':'A family restaurant of Armenian cuisine and homemade wine',
       'hero.book':'Reserve a table', 'hero.menu':'View menu',
@@ -2038,12 +1767,6 @@
       'cellar.mark':'Cellar', 'cellar.eyebrow':'Our wine cellar',
       'cellar.title':'"The stone vaults of our <em>wine cellar</em> are older than any family photograph"',
       'cellar.p':'Walk down the stone staircase into the ancient cellar, where wine matures in karas jars and the scent of tuff and grapevine tells the story faster than any guide.',
-      'app.eyebrow':'Keghar for iPhone',
-      'app.title':'Table reservations, menu and tastings — <em>in a single tap</em>',
-      'app.p':'Save your favourite dishes, order takeaway, reserve a private hall in the cellar, and be the first to receive invitations to wine evenings.',
-      'app.feat1':'Table booking','app.feat2':'Wine list','app.feat3':'Cellar events',
-      'app.phone.title':'Evening in the cellar','app.phone.sub':'FRI · 19:00 · 4 GUESTS',
-      'app.phone.item':'Tolma','app.phone.item2':'Khashlama','app.phone.cta':'Reserve',
       'visit.eyebrow':'For guests','visit.title':'Find <em>us</em>',
       'visit.p':'Old Nork, quiet lanes above the city centre. Come up to us — and time will slow down.',
       'visit.addr.h':'Address',
